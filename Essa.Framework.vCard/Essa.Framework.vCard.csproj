@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1508D433-BF80-4EB9-AA1A-CD96E1E87F79}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Essa.Framework.vCard</RootNamespace>
+    <AssemblyName>Essa.Framework.vCard</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MixERP.Net.VCards\Deserializer.cs" />
+    <Compile Include="MixERP.Net.VCards\Extensions\GenericExtensions.cs" />
+    <Compile Include="MixERP.Net.VCards\Extensions\Sanitizer.cs" />
+    <Compile Include="MixERP.Net.VCards\Extensions\StringExtensions.cs" />
+    <Compile Include="MixERP.Net.VCards\Helpers\FileHelper.cs" />
+    <Compile Include="MixERP.Net.VCards\Helpers\ImageMimeHelper.cs" />
+    <Compile Include="MixERP.Net.VCards\Helpers\VCardHelper.cs" />
+    <Compile Include="MixERP.Net.VCards\Lookups\AddressTypeLookup.cs" />
+    <Compile Include="MixERP.Net.VCards\Lookups\ClassificationLookup.cs" />
+    <Compile Include="MixERP.Net.VCards\Lookups\EmailTypeLookup.cs" />
+    <Compile Include="MixERP.Net.VCards\Lookups\GenderLookup.cs" />
+    <Compile Include="MixERP.Net.VCards\Lookups\KindLookup.cs" />
+    <Compile Include="MixERP.Net.VCards\Lookups\LanguageTypeLookup.cs" />
+    <Compile Include="MixERP.Net.VCards\Lookups\RelationTypeLookup.cs" />
+    <Compile Include="MixERP.Net.VCards\Lookups\TelephoneTypeLookup.cs" />
+    <Compile Include="MixERP.Net.VCards\Lookups\VersionLookup.cs" />
+    <Compile Include="MixERP.Net.VCards\Models\Address.cs" />
+    <Compile Include="MixERP.Net.VCards\Models\Email.cs" />
+    <Compile Include="MixERP.Net.VCards\Models\Extension.cs" />
+    <Compile Include="MixERP.Net.VCards\Models\Impp.cs" />
+    <Compile Include="MixERP.Net.VCards\Models\Language.cs" />
+    <Compile Include="MixERP.Net.VCards\Models\Photo.cs" />
+    <Compile Include="MixERP.Net.VCards\Models\Relation.cs" />
+    <Compile Include="MixERP.Net.VCards\Models\Telephone.cs" />
+    <Compile Include="MixERP.Net.VCards\Models\Token.cs" />
+    <Compile Include="MixERP.Net.VCards\Parser\AllParsers.cs" />
+    <Compile Include="MixERP.Net.VCards\Parser\TokenParser.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\AddressesProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\AnniversaryProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\Base64StringProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\BirthDayProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\CalendarAddressesProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\CalendarUserAddressesProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\CategoriesProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\ClassificationProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\DateTimeProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\DeliveryAddressProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\EmailsProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\ExtensionsProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\FormattedNameProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\GenderProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\GeographyProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\GroupProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\ImppsProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\KeyProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\KindProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\LanguageSProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\LastRevisionProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\LogoProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\MailerProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\NameProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\NickNameProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\NoteProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\OrganizationProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\PhotoProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\RelationsProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\RoleProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\SortStringProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\SoundProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\SourceUriProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\TelephonesProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\TimeZoneInfoProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\TitleProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\UidProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\UrlProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Processors\VersionProcessor.cs" />
+    <Compile Include="MixERP.Net.VCards\Serializer\DefaultSerializer.cs" />
+    <Compile Include="MixERP.Net.VCards\Serializer\V2Serializer.cs" />
+    <Compile Include="MixERP.Net.VCards\Serializer\V3Serializer.cs" />
+    <Compile Include="MixERP.Net.VCards\Serializer\V4Serializer.cs" />
+    <Compile Include="MixERP.Net.VCards\Serializer\VCardCollectionSerializer.cs" />
+    <Compile Include="MixERP.Net.VCards\Serializer\VCardSerializer.cs" />
+    <Compile Include="MixERP.Net.VCards\Types\AddressType.cs" />
+    <Compile Include="MixERP.Net.VCards\Types\ClassificationType.cs" />
+    <Compile Include="MixERP.Net.VCards\Types\DeliveryAddress.cs" />
+    <Compile Include="MixERP.Net.VCards\Types\EmailType.cs" />
+    <Compile Include="MixERP.Net.VCards\Types\Gender.cs" />
+    <Compile Include="MixERP.Net.VCards\Types\Kind.cs" />
+    <Compile Include="MixERP.Net.VCards\Types\LanguageType.cs" />
+    <Compile Include="MixERP.Net.VCards\Types\RelationType.cs" />
+    <Compile Include="MixERP.Net.VCards\Types\TelephoneType.cs" />
+    <Compile Include="MixERP.Net.VCards\Types\VCardVersion.cs" />
+    <Compile Include="MixERP.Net.VCards\VCard.cs" />
+    <Compile Include="MixERP.Net.VCards\VCardParseException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
