@@ -123,7 +123,7 @@
     <Folder Include="Util\Autenticacao\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Alfazema.Framework.Util\Essa.Framework.Util.csproj">
+    <ProjectReference Include="..\Essa.Framework.Util\Essa.Framework.Util.csproj">
       <Project>{3ad4c5d7-c90f-45e7-95e1-2dd5ccafbf99}</Project>
       <Name>Essa.Framework.Util</Name>
     </ProjectReference>

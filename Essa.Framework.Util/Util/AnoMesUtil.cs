@@ -72,6 +72,18 @@
             return ToDateTime().ToLastDayOfTheMonth();
         }
 
+        public override string ToString()
+        {
+            return this.ToDateTime().ToString("MM/yyyy");
+        }
+
+        public string ToString(string formato)
+        {
+            return this.ToDateTime().ToString(formato);
+        }
+
+
+        [Obsolete("Utilizar ToString()")]
         public string ToStringFormatado(string formato = "MM/yyyy")
         {
             return this.ToDateTime().ToString(formato);

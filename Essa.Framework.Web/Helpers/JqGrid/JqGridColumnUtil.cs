@@ -16,7 +16,7 @@
             switch (valor)
             {
                 case FormatterUtilEnum.MesAno:
-                    return obj.SetFormatter("function (cellValue, options, rowObject) { return cellValue.toString().substr(4,2) + '/' + cellValue.toString().substr(0,4); }");
+                    return obj.SetFormatter("function (cellValue, options, rowObject) { return cellValue == null ? '' : (cellValue.toString().substr(4,2) + '/' + cellValue.toString().substr(0,4)); }");
                 default:
                     throw new ArgumentOutOfRangeException();
             }
