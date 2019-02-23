@@ -1,4 +1,4 @@
-﻿namespace Essa.Framework.Xamarin.Util.Repository
+﻿namespace Essa.Framework.XamarinUtil.Repository
 {
     public interface IGenericRepository
     {

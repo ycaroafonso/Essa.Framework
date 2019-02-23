@@ -1,4 +1,4 @@
-﻿namespace Essa.Framework.Xamarin.Util.Extensions
+﻿namespace Essa.Framework.XamarinUtil.Extensions
 {
     using Newtonsoft.Json;
     using System;

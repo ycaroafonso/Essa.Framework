@@ -1,6 +1,6 @@
-﻿namespace Essa.Framework.Xamarin.Util.Util
+﻿namespace Essa.Framework.XamarinUtil.Util
 {
-    using Essa.Framework.Xamarin.Util.Extensions;
+    using Essa.Framework.XamarinUtil.Extensions;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;

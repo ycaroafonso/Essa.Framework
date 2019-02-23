@@ -1,4 +1,4 @@
-﻿namespace Essa.Framework.Xamarin.Util.Repository
+﻿namespace Essa.Framework.XamarinUtil.Repository
 {
     using System;
     using System.Collections.Generic;

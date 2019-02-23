@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Essa.Framework.Xamarin.Util.Extensions
+namespace Essa.Framework.XamarinUtil.Extensions
 {
     public static class ByteExtensions
     {
