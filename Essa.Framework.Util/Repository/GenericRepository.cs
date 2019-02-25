@@ -12,8 +12,7 @@
     public class GenericRepository<TContext> : IGenericBaseRepository, IGenericRepository
         where TContext : DbContext
     {
-
-        string _nomeInstancia;
+        readonly string _nomeInstancia;
 
 
         protected TContext Contexto { get; private set; }
@@ -55,9 +54,9 @@
 
 
 
-        public DbRawSqlQuery<T> SqlQuery<T>(string sql, params object[] parametros)
+        public IList<T> SqlQuery<T>(string sql, params object[] parametros)
         {
-            return Contexto.Database.SqlQuery<T>(sql, parametros);
+            return Contexto.Database.SqlQuery<T>(sql, parametros).ToList();
         }
 
         public int ExecuteSqlCommand(string sql, params object[] parametros)

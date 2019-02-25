@@ -9,7 +9,7 @@
 
     public interface IGenericBaseRepository : IDisposable
     {
-        DbRawSqlQuery<T> SqlQuery<T>(string sql, params object[] parametros);
+        IList<T> SqlQuery<T>(string sql, params object[] parametros);
         int ExecuteSqlCommand(string sql, params object[] parametros);
         DbContextTransaction BeginTransaction();
     }
