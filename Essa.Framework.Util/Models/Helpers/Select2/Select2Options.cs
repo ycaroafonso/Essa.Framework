@@ -107,27 +107,9 @@
 
 
 
-
-        public Select2Options SetMultiple(bool isMultiple = true)
-        {
-            multiple = isMultiple;
-            return this;
-        }
-
-        public Select2Options SetTags(bool isTags = true)
-        {
-            tags = isTags;
-            return this;
-        }
-
         public Select2Options SetAllowClear(bool allowClear = true)
         {
             this.allowClear = allowClear;
-            return this;
-        }
-        public Select2Options SetPlaceholder(string placeholder)
-        {
-            this.placeholder = placeholder;
             return this;
         }
         public Select2Options SetCloseOnSelect(bool closeOnSelect)
@@ -135,23 +117,40 @@
             this.closeOnSelect = closeOnSelect;
             return this;
         }
-
-
-
+        
         public int minimumResultsForSearch { get; set; }
         public Select2Options SetMinimumResultsForSearch(int valor)
         {
             minimumResultsForSearch = valor;
             return this;
         }
-
-
+        public Select2Options SetMultiple(bool isMultiple = true)
+        {
+            multiple = isMultiple;
+            return this;
+        }
         public int quietMillis { get; set; }
         public Select2Options SetQuietMillis(int valor)
         {
             quietMillis = valor;
             return this;
         }
+
+
+        public Select2Options SetTags(bool isTags = true)
+        {
+            tags = isTags;
+            return this;
+        }
+        public Select2Options SetPlaceholder(string placeholder)
+        {
+            this.placeholder = placeholder;
+            return this;
+        }
+
+
+
+
 
 
     }

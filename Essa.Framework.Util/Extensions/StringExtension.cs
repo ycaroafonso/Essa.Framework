@@ -852,6 +852,26 @@
         }
 
 
+        public static T ToEnum<T>(this string value)
+        {
+            return (T)Enum.Parse(typeof(T), value, true);
+        }
+
+        public static int ToInt32(this string valor)
+        {
+            return Convert.ToInt32(valor);
+        }
+
+        public static Int64 ToInt64(this string valor)
+        {
+            return Convert.ToInt64(valor);
+        }
+
+
+
+
+
+
         /// <summary>
         /// Formato o CEP em 00.000-000
         /// </summary>
@@ -868,5 +888,71 @@
                 return string.Empty;
             }
         }
+
+        public static string FormatarTelefone(this string telefone)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(telefone))
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    telefone = telefone.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
+
+                    if (telefone.Length == 11)
+                    {
+                        return string.Format("({0}) {1}-{2}", telefone.Substring(0, 2), telefone.Substring(2, 5), telefone.Substring(7, 4));
+                    }
+                    if (telefone.Length == 10)
+                    {
+                        return string.Format("({0}) {1}-{2}", telefone.Substring(0, 2), telefone.Substring(2, 4), telefone.Substring(6, 4));
+                    }
+                    else if (telefone.Length == 8 || telefone.Length == 9)
+                    {
+
+                        return string.Format("{0}-{1}", telefone.Substring(0, 4), telefone.Substring(4, 4));
+                    }
+                    else
+                    {
+                        return string.Empty;
+                    }
+                }
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+
+
+
+
+        public static string FormataCpf(this string valor)
+        {
+            if (string.IsNullOrEmpty(valor)) return valor;
+            return string.Format(@"{0:000\.000\.000\-00}", Convert.ToInt64(valor));
+        }
+
+        public static string FormataCnpj(this string valor)
+        {
+            if (string.IsNullOrEmpty(valor)) return valor;
+            return string.Format(@"{0:00\.000\.000\/0000\-00}", Convert.ToInt64(valor));
+        }
+
+        public static string FormataCpfCnpj(this string valor)
+        {
+            if (string.IsNullOrEmpty(valor))
+                return string.Empty;
+
+            if (valor.Length == 11)
+                return valor.FormataCpf();
+            else
+                return valor.FormataCnpj();
+        }
+
+
     }
 }

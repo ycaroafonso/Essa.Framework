@@ -7,7 +7,7 @@
 
     public class Email
     {
-        private System.Net.NetworkCredential _credencial;
+        private readonly System.Net.NetworkCredential _credencial;
         private SmtpClient _smtp;
 
         MailMessage _mailMessage;
@@ -32,7 +32,7 @@
             if (emailDe != null)
                 _mailMessage = new MailMessage()
                 {
-                    From = new MailAddress(emailDe)
+                    From = new MailAddress(emailDe), 
                 };
         }
 

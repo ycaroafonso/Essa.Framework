@@ -30,6 +30,9 @@
                         case "cn":
                             _lista = _lista.Where(string.Concat(item.field, ".contains(\"", item.data, "\")"));
                             break;
+                        case "bool":
+                            _lista = _lista.Where(string.Concat(item.field, " = ", item.data));
+                            break;
                         default:
                             _lista = _lista.Where(string.Concat(item.field, " ", item.op, " ", ProcessaValor(item.data)));
                             break;
@@ -62,7 +65,7 @@
             if (!string.IsNullOrEmpty(_GridSettings.SortColumn))
             {
                 Retorna.rows = _lista.OrderBy(_GridSettings.SortColumn + " " + _GridSettings.SortOrder)
-                    .Skip((_GridSettings.PageIndex - 1)*_GridSettings.PageSize)
+                    .Skip((_GridSettings.PageIndex - 1) * _GridSettings.PageSize)
                     .Take(_GridSettings.PageSize)
                     .ToList();
             }
@@ -91,7 +94,7 @@
                     .Take(_GridSettings.PageSize)
                     .ToList().Select(select);
             }
-            
+
             return Retorna;
         }
 

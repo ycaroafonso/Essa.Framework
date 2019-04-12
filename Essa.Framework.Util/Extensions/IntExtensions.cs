@@ -61,5 +61,12 @@ namespace Essa.Framework.Util.Extensions
             return value.ToString().Substring(4, 2) + "/" + value.ToString().Substring(0, 4);
         }
 
+
+
+        public static string ToMesExtenso(this int mes)
+        {
+            return Geral.Meses()[mes - 1];
+        }
+
     }
 }

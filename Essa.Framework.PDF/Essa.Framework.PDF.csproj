@@ -7,8 +7,8 @@
     <ProjectGuid>{DF4A6D3E-7ED6-4224-A6F2-B1CE82C9A641}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Alfazema.Framework.PDF</RootNamespace>
-    <AssemblyName>Alfazema.Framework.PDF</AssemblyName>
+    <RootNamespace>Essa.Framework.PDF</RootNamespace>
+    <AssemblyName>Essa.Framework.PDF</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

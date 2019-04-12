@@ -7,8 +7,8 @@
     <ProjectGuid>{3AD4C5D7-C90F-45E7-95E1-2DD5CCAFBF99}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EssaGestao.Framework.Util</RootNamespace>
-    <AssemblyName>EssaGestao.Framework.Util</AssemblyName>
+    <RootNamespace>Essa.Framework.Util</RootNamespace>
+    <AssemblyName>Essa.Framework.Util</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -77,6 +77,7 @@
     <Compile Include="Extensions\BoolExtensions.cs" />
     <Compile Include="Extensions\ByteExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtension.cs" />
+    <Compile Include="Extensions\DecimalExtensions.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\ImageExtension.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
@@ -94,6 +95,8 @@
     <Compile Include="Repository\GenericExceptionRepository.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
+    <Compile Include="Repository\ITransaction.cs" />
+    <Compile Include="Repository\Transaction.cs" />
     <Compile Include="Util\AnoMesUtil.cs" />
     <Compile Include="Util\Autenticacao.cs" />
     <Compile Include="Util\CriptografiaMd5.cs" />

@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Runtime.Remoting.Messaging;
@@ -64,14 +63,26 @@
             return Contexto.Database.ExecuteSqlCommand(sql, parametros);
         }
 
-        public DbContextTransaction BeginTransaction()
+
+        ITransaction _transaction;
+        public ITransaction BeginTransaction()
         {
-            return Contexto.Database.BeginTransaction();
+            _transaction = new Transaction<TContext>(Contexto);
+
+            return _transaction;
         }
 
 
 
-
+        //[Flags]
+        //public enum EntityState
+        //{
+        //    Detached = 1,
+        //    Unchanged = 2,
+        //    Added = 4,
+        //    Deleted = 8,
+        //    Modified = 16
+        //}
 
 
 
@@ -214,8 +225,6 @@
         }
 
 
-
-
         public virtual IGenericRepository<T> Anexar(T instancia)
         {
             Contexto.Set<T>().Attach(instancia);
@@ -230,6 +239,25 @@
 
             return this;
         }
+
+
+        #region Plus
+
+
+        public void AnexarAdded(T instancia)
+        {
+            Anexar(instancia, EntityState.Added);
+        }
+
+        public virtual IGenericRepository<T> AnexarAdded(ICollection<T> lista)
+        {
+            Anexar(lista, EntityState.Added);
+
+            return this;
+        }
+
+
+        #endregion
 
     }
 

@@ -1,12 +1,10 @@
 ﻿namespace Essa.Framework.Util.Extensions
 {
     using Extensions;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Linq.Expressions;
 
 
     public static class UtilExtension
@@ -88,33 +86,6 @@
         #endregion
 
 
-
-        /// <summary>
-        /// IfGreaterLessOrZero
-        /// </summary>
-        /// <param name="valor"></param>
-        /// <param name="seMaior"></param>
-        /// <param name="seMenor"></param>
-        /// <param name="seZero"></param>
-        /// <returns></returns>
-        public static string MaiorMenorOuZero(this decimal valor, string seMaior, string seMenor, string seZero)
-        {
-            switch (valor.CompareTo(0))
-            {
-                case -1:
-                    return seMenor;
-                case 0:
-                    return seZero;
-                default:
-                    return seMaior;
-            }
-        }
-
-        public static string ToMesExtenso(this int mes)
-        {
-            return Geral.Meses()[mes - 1];
-        }
-
         public static byte[] ToByteArray(this Stream input)
         {
             byte[] buffer = new byte[16 * 1024];
@@ -133,86 +104,6 @@
         public static Dictionary<int, T> ToDictionary<T>(this T[] lista)
         {
             return lista.Select((item, index) => new { index, item }).ToDictionary(c => c.index, d => d.item);
-        }
-
-
-
-
-        public static string FormataCpf(this string valor)
-        {
-            if (string.IsNullOrEmpty(valor)) return valor;
-            return string.Format(@"{0:000\.000\.000\-00}", Convert.ToInt64(valor));
-        }
-
-        public static string FormataCnpj(this string valor)
-        {
-            if (string.IsNullOrEmpty(valor)) return valor;
-            return string.Format(@"{0:00\.000\.000\/0000\-00}", Convert.ToInt64(valor));
-        }
-
-        public static string FormataCpfCnpj(this string valor)
-        {
-            if (string.IsNullOrEmpty(valor))
-                return string.Empty;
-
-            if (valor.Length == 11)
-                return valor.FormataCpf();
-            else
-                return valor.FormataCnpj();
-        }
-
-        public static string DateToStr(this DateTime valor)
-        {
-            return Convert.ToDateTime(valor).ToString("dd/MM/yyyy");
-        }
-
-        public static String DateToStr(this DateTime? valor)
-        {
-            if (valor == null)
-            {
-                return String.Empty;
-            }
-            else
-            {
-                return Convert.ToDateTime(valor).ToString("dd/MM/yyyy");
-            }
-        }
-
-        public static string FormatarTelefone(this string telefone)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(telefone))
-                {
-                    return string.Empty;
-                }
-                else
-                {
-                    telefone = telefone.Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
-
-                    if (telefone.Length == 11)
-                    {
-                        return string.Format("({0}) {1}-{2}", telefone.Substring(0, 2), telefone.Substring(2, 5), telefone.Substring(7, 4));
-                    }
-                    if (telefone.Length == 10)
-                    {
-                        return string.Format("({0}) {1}-{2}", telefone.Substring(0, 2), telefone.Substring(2, 4), telefone.Substring(6, 4));
-                    }
-                    else if (telefone.Length == 8 || telefone.Length == 9)
-                    {
-
-                        return string.Format("{0}-{1}", telefone.Substring(0, 4), telefone.Substring(4, 4));
-                    }
-                    else
-                    {
-                        return string.Empty;
-                    }
-                }
-            }
-            catch
-            {
-                return string.Empty;
-            }
         }
 
         public static T IfContainsOnlyOne<T>(this IEnumerable<T> lista)

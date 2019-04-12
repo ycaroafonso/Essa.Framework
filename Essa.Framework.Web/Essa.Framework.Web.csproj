@@ -7,8 +7,8 @@
     <ProjectGuid>{6936E3B9-BA10-4931-816C-CA452719B8B8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Alfazema.Framework.Web</RootNamespace>
-    <AssemblyName>Alfazema.Framework.Web</AssemblyName>
+    <RootNamespace>Essa.Framework.Web</RootNamespace>
+    <AssemblyName>Essa.Framework.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
