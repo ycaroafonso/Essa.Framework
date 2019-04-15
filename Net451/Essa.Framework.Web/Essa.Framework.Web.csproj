@@ -106,7 +106,7 @@
     <Compile Include="Util\Util.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Alfazema.Framework.Util\Essa.Framework.Util.csproj">
+    <ProjectReference Include="..\Essa.Framework.Util\Essa.Framework.Util.csproj">
       <Project>{237e076f-62f3-4047-96d0-acc4bede7188}</Project>
       <Name>Alfazema.Framework.Util</Name>
     </ProjectReference>
