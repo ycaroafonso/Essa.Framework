@@ -60,13 +60,13 @@
     <Compile Include="Util\UtilTest\GeralTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Alfazema.Framework.Util\Essa.Framework.Util.csproj">
+    <ProjectReference Include="..\Essa.Framework.Util\Essa.Framework.Util.csproj">
       <Project>{3ad4c5d7-c90f-45e7-95e1-2dd5ccafbf99}</Project>
       <Name>Alfazema.Framework.Util</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
