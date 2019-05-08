@@ -86,7 +86,7 @@
             {
                 xml.LoadXml(xmlstr.ToString());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 StringBuilder str = new StringBuilder();
                 foreach (var item in xmlstr.Split(new[] { '\n' }))

@@ -5,6 +5,7 @@
     using Helpers.JqGrid;
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Validation;
     using System.Linq;
     using System.Web.Mvc;
@@ -63,6 +64,12 @@
         {
             return base.Json(new ResultModel { Situacao = "ERRO", Mensagem = exception.ToMensagemErro(), Parametros = parametros }, behavior);
         }
+
+        protected internal JsonResult Json(DbUpdateException exception, JsonRequestBehavior behavior = JsonRequestBehavior.DenyGet, object parametros = null)
+        {
+            return base.Json(new ResultModel { Situacao = "ERRO", Mensagem = exception.ToMensagemErro(), Parametros = parametros }, behavior);
+        }
+
 
         /// <summary>
         /// Retorna um json no padrão do IResultModel

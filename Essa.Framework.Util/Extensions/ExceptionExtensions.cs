@@ -1,6 +1,7 @@
 ﻿namespace Essa.Framework.Util.Extensions
 {
     using System;
+    using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Validation;
     using System.Text;
 
@@ -39,6 +40,26 @@
             else
                 if (e.InnerException == null) return e.Message;
             else return e.Message + "<br/>" + e.InnerException.ToMensagemErro(nivel++).PadRight(nivel, '-');
+        }
+
+
+        public static string ToMensagemErro(this DbUpdateException ex, int nivel = 0)
+        {
+            var builder = new StringBuilder("A DbUpdateException was caught while saving changes. ");
+
+            try
+            {
+                foreach (var result in ex.Entries)
+                {
+                    builder.AppendFormat("Type: {0} was part of the problem. ", result.Entity.GetType().Name);
+                }
+            }
+            catch (Exception e)
+            {
+                builder.Append("Error parsing DbUpdateException: " + e.ToString());
+            }
+
+            return builder.ToString();
         }
 
     }
