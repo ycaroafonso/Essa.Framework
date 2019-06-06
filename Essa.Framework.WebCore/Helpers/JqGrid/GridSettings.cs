@@ -1,10 +1,9 @@
 ﻿namespace Essa.Framework.WebCore.Helpers.JqGrid
 {
-    using Microsoft.AspNetCore.Http;
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Json;
     using System.Text;
-    using System.Web.Mvc;
+    using System.Threading.Tasks;
 
 
     [System.Web.Mvc.ModelBinder(typeof(GridModelBinder))]
@@ -53,29 +52,34 @@
         public string data { get; set; }
     }
 
-    public class GridModelBinder : IModelBinder
+    public class GridModelBinder : Microsoft.AspNetCore.Mvc.ModelBinding.IModelBinder
     {
-        public object BindModel(ControllerContext controllerContext,
-                                ModelBindingContext bindingContext)
+
+        public object BindModel(Microsoft.AspNetCore.Mvc.ControllerContext controllerContext, Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingContext bindingContext)
         {
             try
             {
-
                 var request = controllerContext.HttpContext.Request;
+                                
                 return new GridSettings
                 {
-                    IsSearch = bool.Parse(request["_search"] ?? "false"),
-                    PageIndex = int.Parse(request["page"] ?? "1"),
-                    PageSize = int.Parse(request["rows"] ?? "10"),
-                    SortColumn = request["sidx"] ?? "",
-                    SortOrder = request["sord"] ?? "asc",
-                    Where = Filter.Create(request["filters"] ?? "")
+                    IsSearch = bool.Parse(request.Query["_search"].ToString() ?? "false"),
+                    PageIndex = int.Parse(request.Query["page"].ToString() ?? "1"),
+                    PageSize = int.Parse(request.Query["rows"].ToString() ?? "10"),
+                    SortColumn = request.Query["sidx"].ToString() ?? "",
+                    SortOrder = request.Query["sord"].ToString() ?? "asc",
+                    Where = Filter.Create(request.Query["filters"].ToString() ?? "")
                 };
             }
             catch
             {
                 return null;
             }
+        }
+
+        public Task BindModelAsync(Microsoft.AspNetCore.Mvc.ModelBinding.ModelBindingContext bindingContext)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
