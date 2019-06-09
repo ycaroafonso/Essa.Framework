@@ -815,6 +815,10 @@
 
             return valor.Substring(0, totalWidth);
         }
+        public static string PadRightComReticencia(this string valor, int totalWidth, char valorRepetir = ' ')
+        {
+            return valor.SubstringComReticencia(totalWidth).PadRight(totalWidth, valorRepetir);
+        }
 
 
         public static string ToStringUrl(this string valor)
