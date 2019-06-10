@@ -183,10 +183,12 @@
 
             return this;
         }
-        //public virtual IEnumerable<T> Excluir(Expression<Func<T, bool>> func)
-        //{
-        //    return Contexto.Set<T>().RemoveRange(ObterTodos().Where(func));
-        //}
+        public virtual IEnumerable<T> Excluir(Expression<Func<T, bool>> func)
+        {
+            Contexto.Set<T>().RemoveRange(ObterTodos().Where(func));
+
+            return null;
+        }
 
 
 
@@ -205,6 +207,29 @@
 
             return this;
         }
+
+
+
+
+
+        #region Plus
+
+
+        public void AnexarAdded(T instancia)
+        {
+            Anexar(instancia, EntityState.Added);
+        }
+
+        public virtual IGenericRepository<T> AnexarAdded(ICollection<T> lista)
+        {
+            Anexar(lista, EntityState.Added);
+
+            return this;
+        }
+
+
+        #endregion
+
 
     }
 
