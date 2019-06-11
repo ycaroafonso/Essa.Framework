@@ -162,6 +162,9 @@ namespace Essa.Framework.Web.Helpers.JqGrid
         private bool? _sortOnHeaderClick;
         //private int? width;
 
+        public JRaw rowattr;
+
+
         public bool subGrid;
         public JqGridOptions setSubGrid(bool subgrid)
         {
@@ -697,6 +700,22 @@ function (sub_grid_id, row_id) {
             this.rownumWidth = rowNumWidth;
             return this;
         }
+
+
+        /// <summary>
+        /// function (item)
+        /// </summary>
+        /// <param name="rowNumWidth"></param>
+        /// <returns></returns>
+        public JqGridOptions setRowAttr(string rowAttr)
+        {
+            this.rowattr = new JRaw(rowAttr);
+            return this;
+        }
+
+
+
+
 
         /// <summary>
         /// Creates dynamic scrolling grids. When enabled, the pager elements are disabled and we can use the 
