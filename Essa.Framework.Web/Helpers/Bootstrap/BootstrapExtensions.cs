@@ -74,5 +74,9 @@
         {
             return new DropDownBuilder(_id, _htmlHelper.ViewContext).AddItem(itens).Texto(titulo).Montar();
         }
+        public MvcHtmlString DropDown(List<DropDownItem> itens)
+        {
+            return new DropDownBuilder(_id, _htmlHelper.ViewContext).AddItem(itens).Montar();
+        }
     }
 }
