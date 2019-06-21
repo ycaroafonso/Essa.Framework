@@ -75,43 +75,5 @@
         }
 
 
-        public static BANKTRANLIST LerOFX(string xmlstr)
-        {
-            xmlstr = xmlstr.Substring(xmlstr.IndexOf("<OFX>"));
-
-            XmlDocument xml = new XmlDocument();
-
-
-            try
-            {
-                xml.LoadXml(xmlstr.ToString());
-            }
-            catch (Exception ex)
-            {
-                StringBuilder str = new StringBuilder();
-                foreach (var item in xmlstr.Split(new[] { '\n' }))
-                {
-                    str.Append(item);
-
-                    var rg = System.Text.RegularExpressions.Regex.Match(item, @"<([^>]*)>([^<]*)([^\n\r]*)").Groups;
-
-                    if (rg[1].Value != "" && rg[2].Value != "" && rg[3].Value == "")
-                        str.Append("</" + rg[1].Value + ">");
-                    else
-                        str.AppendLine("");
-                }
-
-                xml.LoadXml(str.ToString());
-            }
-
-            var transactions = xml
-                .GetElementsByTagName("BANKTRANLIST");
-
-            var serializer = new XmlSerializer(typeof(BANKTRANLIST), new XmlRootAttribute("BANKTRANLIST"));
-            var trans = (BANKTRANLIST)serializer.Deserialize(new XmlNodeReader(transactions[0]));
-
-            return trans;
-        }
-
     }
 }

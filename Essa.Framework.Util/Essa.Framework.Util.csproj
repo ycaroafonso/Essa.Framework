@@ -91,6 +91,8 @@
     <Compile Include="Models\Helpers\Select2\Select2Options.cs" />
     <Compile Include="Models\Helpers\TreeView\TreeViewOptions.cs" />
     <Compile Include="Models\OFX\OFX.cs" />
+    <Compile Include="Models\OFX\OFX_Credito.cs" />
+    <Compile Include="Models\OFX\OFX_Debito.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericExceptionRepository.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
@@ -107,11 +109,15 @@
     <Compile Include="Util\EncryptParam.cs" />
     <Compile Include="Util\Geral.cs" />
     <Compile Include="Util\NumeroExtenso.cs" />
+    <Compile Include="Util\OFXUtil.cs" />
     <Compile Include="Util\UnidadeMedida.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\OFX\OFX.xslt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
