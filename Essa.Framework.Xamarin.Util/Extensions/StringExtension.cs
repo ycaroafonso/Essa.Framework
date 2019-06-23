@@ -807,6 +807,20 @@
             return valor;
         }
 
+        public static string SubstringInverso(this string valor, int qtde)
+        {
+            if (valor.Length > qtde)
+                return valor.Substring(valor.Length - qtde);
+            return valor;
+        }
+        public static string SubstringInversoComReticencia(this string valor, int qtde)
+        {
+            if (valor.Length > qtde)
+                return string.Concat("...", valor.SubstringInverso(qtde - 3));
+            return valor;
+        }
+
+
 
         public static string PadRight(this string valor, int totalWidth, string valorRepetir)
         {
@@ -815,6 +829,11 @@
 
             return valor.Substring(0, totalWidth);
         }
+        public static string PadRightComReticencia(this string valor, int totalWidth, char valorRepetir = ' ')
+        {
+            return valor.SubstringComReticencia(totalWidth).PadRight(totalWidth, valorRepetir);
+        }
+
 
 
         public static string ToStringUrl(this string valor)
