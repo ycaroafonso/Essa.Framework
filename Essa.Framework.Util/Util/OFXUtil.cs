@@ -62,8 +62,7 @@
             }
 
 
-            MontarAgenciaConta();
-            MontarTransacoes();
+            MontarAgenciaContaTransacoes();
         }
 
 
@@ -71,14 +70,14 @@
 
 
 
-        public void MontarAgenciaConta()
+        public void MontarAgenciaContaTransacoes()
         {
             var STMTRS = _xml
                 .GetElementsByTagName("STMTRS");
 
             STMTRS trans;
 
-            if (STMTRS == null)
+            if (STMTRS.Count == 0)
             {
                 TipoConta = TipoContaEnum.Credito;
 
@@ -101,15 +100,6 @@
                 Conta = trans.BANKACCTFROM?.ACCTID;
                 Banco = trans.BANKACCTFROM?.BANKID;
             }
-        }
-
-        public void MontarTransacoes()
-        {
-            var STMTRS = _xml
-                .GetElementsByTagName("STMTRS");
-
-            var trans = (STMTRS)(new XmlSerializer(typeof(STMTRS), new XmlRootAttribute("STMTRS")))
-                .Deserialize(new XmlNodeReader(STMTRS[0]));
 
             DataInicio = trans.BANKTRANLIST.DTSTART;
             DataFim = trans.BANKTRANLIST.DTEND;
@@ -117,5 +107,6 @@
 
             Transacoes = trans.BANKTRANLIST.STMTTRN;
         }
+
     }
 }
