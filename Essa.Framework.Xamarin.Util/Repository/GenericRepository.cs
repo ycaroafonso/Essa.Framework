@@ -1,25 +1,71 @@
 ﻿namespace Essa.Framework.XamarinUtil.Repository
 {
-    using System;
+    using SQLite;
     using System.Collections.Generic;
 
 
-    public class BaseGenericRepository<T> : IGenericRepository
+    public abstract class GenericRepository<T> : IGenericRepository<T>
         where T : class
     {
-        public void Alterar<T1>(T1 item)
+        protected SQLiteConnection Contexto;
+        protected readonly object locker;
+
+        public GenericRepository(IDatabaseHelper db)
         {
-            throw new NotImplementedException();
+            Contexto = db.database;
+
+            locker = db.locker;
+
+            Contexto.CreateTable<T>();
         }
 
-        public int Excluir<T1>(int id)
+
+        public abstract TableQuery<T> ObterTodos();
+
+
+        public int Incluir(T item)
         {
-            throw new NotImplementedException();
+            lock (locker)
+            {
+                return Contexto.Insert(item);
+            }
         }
 
-        public int Incluir<T1>(T1 item)
+        public void Incluir(List<T> lista)
         {
-            throw new NotImplementedException();
+            lock (locker)
+            {
+                Contexto.InsertAll(lista);
+            }
+        }
+
+        public void Alterar(T item)
+        {
+            lock (locker)
+            {
+                Contexto.Update(item);
+            }
+        }
+
+        public void Alterar(ICollection<T> lista)
+        {
+            lock (locker)
+            {
+                Contexto.UpdateAll(lista);
+            }
+        }
+
+        public int Excluir(int id)
+        {
+            lock (locker)
+            {
+                return Contexto.Delete<T>(id);
+            }
+        }
+
+        public List<TQuery> SqlQuery<TQuery>(string sql, params object[] args) where TQuery : class, new()
+        {
+            return Contexto.Query<TQuery>(sql, args);
         }
     }
 }
