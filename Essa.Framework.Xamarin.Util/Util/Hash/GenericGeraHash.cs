@@ -1,5 +1,6 @@
-﻿namespace Essa.Framework.XamarinUtil.Util.Hash
+namespace Essa.Framework.XamarinUtil.Util.Hash
 {
+    using Essa.Framework.XamarinUtil.Util;
     using System;
 
 

@@ -12,49 +12,104 @@
 
     public class GenericRest
     {
-        protected string BaseUrl { get; set; }
         protected HttpClient Http { get; set; }
 
-        public GenericRest(string baseUrl, HttpClient http)
+        readonly string _controllerUrl;
+        HttpResponseMessage _response;
+
+
+        public bool IsSuccessStatusCode => _response.IsSuccessStatusCode;
+
+
+
+        public GenericRest(string servidor, string controllerUrl, HttpClient http)
         {
-            BaseUrl = baseUrl;
+            _controllerUrl = controllerUrl;
+
             Http = http;
+
+            SetServidor(servidor);
         }
 
 
-        protected async Task<T> GetOne<T>(string resource)
+        public void SetServidor(string value)
         {
-            Http.DefaultRequestHeaders.Accept.Clear();
-            Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            var response = Http.GetAsync(FromUrl(BaseUrl, resource)).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                return await Task.Run(() => JsonConvert.DeserializeObject<T>(content)).ConfigureAwait(false);
-            }
-
-            return await Task.Run(() => JsonConvert.DeserializeObject<T>("")).ConfigureAwait(false);
+            Http.BaseAddress = new Uri($"{value}/api/" + _controllerUrl);
         }
 
-        protected async Task<IEnumerable<T>> Get<T>(string resource)
+        public void GetOne(string resource)
+        {
+            try
+            {
+                Http.DefaultRequestHeaders.Accept.Clear();
+                Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                _response = Http.GetAsync(resource).Result;
+
+            }
+            catch (HttpRequestException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public async Task<T> GetOne<T>(string resource)
+        {
+            try
+            {
+                Http.DefaultRequestHeaders.Accept.Clear();
+                Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                _response = Http.GetAsync(resource).Result;
+
+                if (IsSuccessStatusCode)
+                {
+                    var content = await _response.Content.ReadAsStringAsync();
+                    return await Task.Run(() => JsonConvert.DeserializeObject<T>(content)).ConfigureAwait(false);
+                }
+
+                return await Task.Run(() => JsonConvert.DeserializeObject<T>("")).ConfigureAwait(false);
+            }
+            catch (HttpRequestException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+
+
+        public async Task<IEnumerable<T>> Get<T>(string resource)
         {
             return await GetOne<IEnumerable<T>>(resource);
         }
 
-        protected async Task<T> Post<T>(string path, object obj)
+        public async Task<T> Post<T>(string path, object obj)
         {
             try
             {
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
-                var response = await Http.PostAsync(FromUrl(BaseUrl, path), content);
-                if (response.IsSuccessStatusCode)
+                _response = await Http.PostAsync(path, content);
+
+                if (IsSuccessStatusCode)
                 {
-                    var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var json = await _response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var res = JsonConvert.DeserializeObject<T>(json);
                     return res;
                 }
-                throw new NotImplementedException();
+                throw new Exception();
+            }
+            catch (DuplicateWaitObjectException exD)
+            {
+                throw exD;
             }
             catch (Exception ex)
             {
@@ -64,42 +119,36 @@
         }
 
 
-        protected async Task<T> Post<T>(string path, byte[] upfilebytes, string nomeparametro, string nomearquivo, object obj = null)
+
+
+        public MultipartFormDataContent ContentMultiPart { get; set; }
+
+        public async Task<T> Post<T, TSend>(string path, byte[] upfilebytes, string nomeparametro, string nomearquivo, TSend obj)
             where T : class
         {
-            MultipartFormDataContent content = new MultipartFormDataContent();
+            if (ContentMultiPart == null)
+                ContentMultiPart = new MultipartFormDataContent();
 
-            content.Add(new ByteArrayContent(upfilebytes), nomeparametro, nomearquivo);
+            ContentMultiPart.Add(new ByteArrayContent(upfilebytes), nomeparametro, nomearquivo);
+            ContentMultiPart.Add(new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
 
-            if (obj != null)
-                content.Add(new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
+            return await PostMultipart<T>(path);
+        }
 
-            var response = await Http.PostAsync(FromUrl(BaseUrl, path), content);
 
-            if (response.IsSuccessStatusCode)
+        public async Task<T> PostMultipart<T>(string path)
+            where T : class
+        {
+            _response = await Http.PostAsync(path, ContentMultiPart);
+
+            if (IsSuccessStatusCode)
             {
-                var json = response.Content.ReadAsStringAsync();
-                return StringExtension.ToObject<T>(json.Result);
+                var json = await _response.Content.ReadAsStringAsync();
+                return await Task.Run(() => json.ToObject<T>()).ConfigureAwait(false);
             }
-            throw new NotImplementedException();
+
+            return await Task.Run(() => "".ToObject<T>()).ConfigureAwait(false);
         }
 
-
-        protected async Task<bool> Post(string path, byte[] upfilebytes, string nomeparametro, string nomearquivo, object obj = null)
-        {
-            MultipartFormDataContent content = new MultipartFormDataContent();
-
-            content.Add(new ByteArrayContent(upfilebytes), nomeparametro, nomearquivo);
-
-            if (obj != null)
-                content.Add(new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
-
-            return (await Http.PostAsync(FromUrl(BaseUrl, path), content)).IsSuccessStatusCode;
-        }
-
-        private string FromUrl(string baseUrl, string resource)
-        {
-            return string.Concat(baseUrl, resource);
-        }
     }
 }

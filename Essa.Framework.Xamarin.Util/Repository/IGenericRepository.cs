@@ -1,9 +1,9 @@
 ﻿namespace Essa.Framework.XamarinUtil.Repository
 {
-    public interface IGenericRepository
+    public interface IGenericRepository<T>
     {
-        int Incluir<T>(T item);
-        void Alterar<T>(T item);
-        int Excluir<T>(int id);
+        int Incluir(T item);
+        void Alterar(T item);
+        int Excluir(int id);
     }
 }

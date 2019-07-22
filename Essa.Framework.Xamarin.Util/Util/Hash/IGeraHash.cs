@@ -1,4 +1,4 @@
-﻿namespace Essa.Framework.XamarinUtil.Util.Hash
+namespace Essa.Framework.XamarinUtil.Util.Hash
 {
     public interface IGeraHash
     {
