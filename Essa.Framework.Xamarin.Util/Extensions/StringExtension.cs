@@ -807,6 +807,18 @@
             return valor;
         }
 
+        public static string SubstringInverso(this string valor, int qtde)
+        {
+            if (valor.Length > qtde)
+                return valor.Substring(valor.Length - qtde);
+            return valor;
+        }
+        public static string SubstringInversoComReticencia(this string valor, int qtde)
+        {
+            if (valor.Length > qtde)
+                return string.Concat("...", valor.SubstringInverso(qtde - 3));
+            return valor;
+        }
 
         public static string PadRight(this string valor, int totalWidth, string valorRepetir)
         {
