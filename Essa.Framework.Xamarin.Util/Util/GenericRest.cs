@@ -32,12 +32,12 @@
         }
 
 
-        public void SetServidor(string value)
+        protected void SetServidor(string value)
         {
             Http.BaseAddress = new Uri($"{value}/api/" + _controllerUrl);
         }
 
-        public void GetOne(string resource)
+        protected void GetOne(string resource)
         {
             try
             {
@@ -57,7 +57,7 @@
             }
         }
 
-        public async Task<T> GetOne<T>(string resource)
+        protected async Task<T> GetOne<T>(string resource)
         {
             try
             {
@@ -87,17 +87,17 @@
 
 
 
-        public async Task<IEnumerable<T>> Get<T>(string resource)
+        protected async Task<IEnumerable<T>> Get<T>(string resource)
         {
             return await GetOne<IEnumerable<T>>(resource);
         }
 
-        public async Task<T> Post<T>(string path, object obj)
+        protected async Task<T> Post<T>(string path, object obj)
         {
             try
             {
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
-                _response = await Http.PostAsync(path, content);
+                _response = await Http.PosatAsync(path, content);
 
                 if (IsSuccessStatusCode)
                 {
@@ -121,9 +121,9 @@
 
 
 
-        public MultipartFormDataContent ContentMultiPart { get; set; }
+        protected MultipartFormDataContent ContentMultiPart { get; set; }
 
-        public async Task<T> Post<T, TSend>(string path, byte[] upfilebytes, string nomeparametro, string nomearquivo, TSend obj)
+        protected async Task<T> Post<T, TSend>(string path, byte[] upfilebytes, string nomeparametro, string nomearquivo, TSend obj)
             where T : class
         {
             if (ContentMultiPart == null)
@@ -136,7 +136,7 @@
         }
 
 
-        public async Task<T> PostMultipart<T>(string path)
+        protected async Task<T> PostMultipart<T>(string path)
             where T : class
         {
             _response = await Http.PostAsync(path, ContentMultiPart);
