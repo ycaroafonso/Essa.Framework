@@ -31,10 +31,11 @@
             SetServidor(servidor);
         }
 
-
+        string _url = "";
         protected void SetServidor(string value)
         {
-            Http.BaseAddress = new Uri($"{value}/api/" + _controllerUrl);
+            _url = $"{value}/api/{_controllerUrl}";
+            //  Http.BaseAddress = new Uri($"{value}/api/" + _controllerUrl);
         }
 
         protected void GetOne(string resource)
@@ -97,7 +98,7 @@
             try
             {
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
-                _response = await Http.PostAsync(path, content);
+                _response = await Http.PostAsync(_url + path, content);
 
                 if (IsSuccessStatusCode)
                 {
