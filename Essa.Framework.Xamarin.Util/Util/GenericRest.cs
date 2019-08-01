@@ -97,7 +97,7 @@
             try
             {
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
-                _response = await Http.PosatAsync(path, content);
+                _response = await Http.PostAsync(path, content);
 
                 if (IsSuccessStatusCode)
                 {
