@@ -28,25 +28,21 @@
 
             Http = http;
 
-            SetServidor(servidor);
-        }
-
-        string _url = "";
-        protected void SetServidor(string value)
-        {
-            _url = $"{value}/api/{_controllerUrl}";
+            _url = $"{servidor}{_controllerUrl}";
             //  Http.BaseAddress = new Uri($"{value}/api/" + _controllerUrl);
         }
 
-        protected void GetOne(string resource)
+        string _url = "";
+    
+
+        protected async Task GetOneAsync(string resource)
         {
             try
             {
                 Http.DefaultRequestHeaders.Accept.Clear();
                 Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                _response = Http.GetAsync(resource).Result;
-
+                _response = await Http.GetAsync(resource);
             }
             catch (HttpRequestException ex)
             {
@@ -58,14 +54,14 @@
             }
         }
 
-        protected async Task<T> GetOne<T>(string resource)
+        protected async Task<T> GetOne<T>(string path)
         {
             try
             {
                 Http.DefaultRequestHeaders.Accept.Clear();
                 Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                _response = Http.GetAsync(resource).Result;
+                _response = await Http.GetAsync(_url + path);
 
                 if (IsSuccessStatusCode)
                 {
