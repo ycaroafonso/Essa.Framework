@@ -829,6 +829,9 @@
         }
         public static string PadRightComReticencia(this string valor, int totalWidth, char valorRepetir = ' ')
         {
+            if (valor.Length > totalWidth)
+                return valor.SubstringComReticencia(totalWidth - 3).PadRight(totalWidth, valorRepetir);
+
             return valor.SubstringComReticencia(totalWidth).PadRight(totalWidth, valorRepetir);
         }
 
