@@ -136,7 +136,7 @@
         protected async Task<T> PostMultipart<T>(string path)
             where T : class
         {
-            _response = await Http.PostAsync(path, ContentMultiPart);
+            _response = await Http.PostAsync(_url + path, ContentMultiPart);
 
             if (IsSuccessStatusCode)
             {
