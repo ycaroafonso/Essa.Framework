@@ -28,24 +28,21 @@
 
             Http = http;
 
-            SetServidor(servidor);
+            _url = $"{servidor}{_controllerUrl}";
+            //  Http.BaseAddress = new Uri($"{value}/api/" + _controllerUrl);
         }
 
+        string _url = "";
+    
 
-        public void SetServidor(string value)
-        {
-            Http.BaseAddress = new Uri($"{value}/api/" + _controllerUrl);
-        }
-
-        public void GetOne(string resource)
+        protected async Task GetOneAsync(string resource)
         {
             try
             {
                 Http.DefaultRequestHeaders.Accept.Clear();
                 Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                _response = Http.GetAsync(resource).Result;
-
+                _response = await Http.GetAsync(resource);
             }
             catch (HttpRequestException ex)
             {
@@ -57,14 +54,14 @@
             }
         }
 
-        public async Task<T> GetOne<T>(string resource)
+        protected async Task<T> GetOne<T>(string path)
         {
             try
             {
                 Http.DefaultRequestHeaders.Accept.Clear();
                 Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                _response = Http.GetAsync(resource).Result;
+                _response = await Http.GetAsync(_url + path);
 
                 if (IsSuccessStatusCode)
                 {
@@ -87,17 +84,17 @@
 
 
 
-        public async Task<IEnumerable<T>> Get<T>(string resource)
+        protected async Task<IEnumerable<T>> Get<T>(string resource)
         {
             return await GetOne<IEnumerable<T>>(resource);
         }
 
-        public async Task<T> Post<T>(string path, object obj)
+        protected async Task<T> Post<T>(string path, object obj)
         {
             try
             {
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
-                _response = await Http.PostAsync(path, content);
+                _response = await Http.PostAsync(_url + path, content);
 
                 if (IsSuccessStatusCode)
                 {
@@ -121,9 +118,9 @@
 
 
 
-        public MultipartFormDataContent ContentMultiPart { get; set; }
+        protected MultipartFormDataContent ContentMultiPart { get; set; }
 
-        public async Task<T> Post<T, TSend>(string path, byte[] upfilebytes, string nomeparametro, string nomearquivo, TSend obj)
+        protected async Task<T> Post<T, TSend>(string path, byte[] upfilebytes, string nomeparametro, string nomearquivo, TSend obj)
             where T : class
         {
             if (ContentMultiPart == null)
@@ -136,10 +133,10 @@
         }
 
 
-        public async Task<T> PostMultipart<T>(string path)
+        protected async Task<T> PostMultipart<T>(string path)
             where T : class
         {
-            _response = await Http.PostAsync(path, ContentMultiPart);
+            _response = await Http.PostAsync(_url + path, ContentMultiPart);
 
             if (IsSuccessStatusCode)
             {

@@ -108,6 +108,8 @@
     <Compile Include="Util\Email.cs" />
     <Compile Include="Util\EncryptParam.cs" />
     <Compile Include="Util\Geral.cs" />
+    <Compile Include="Util\Hash\GenericGeraHash.cs" />
+    <Compile Include="Util\Hash\IGeraHash.cs" />
     <Compile Include="Util\NumeroExtenso.cs" />
     <Compile Include="Util\OFXUtil.cs" />
     <Compile Include="Util\UnidadeMedida.cs" />
