@@ -15,5 +15,16 @@
         {
             return Framework.Util.Geral.SimNao().ToSelectList(x => x.Key, y => y.Value, null, null, valorSelecionado);
         }
+
+
+
+        public static SelectList SimNaoBooleano()
+        {
+            return Framework.Util.Geral.SimNaoBooleano().ToSelectList(x => x.Key, y => y.Value);
+        }
+        public static SelectList SimNaoBooleano(string valorSelecionado)
+        {
+            return Framework.Util.Geral.SimNaoBooleano().ToSelectList(x => x.Key, y => y.Value, null, null, valorSelecionado);
+        }
     }
 }
