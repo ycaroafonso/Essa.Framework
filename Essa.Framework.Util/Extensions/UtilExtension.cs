@@ -119,5 +119,10 @@
             lista.Remove(itemRemover);
             return lista.ToArray();
         }
+
+        public static string NomeSemExtensao(this FileInfo fileInfo)
+        {
+            return fileInfo.Name.Replace(fileInfo.Extension, "");
+        }
     }
 }
