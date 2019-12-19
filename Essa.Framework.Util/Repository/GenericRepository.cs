@@ -161,6 +161,12 @@
         {
             return Contexto.Set<T>();
         }
+
+
+        public void NaoAlterar<T, TProperty>(T instancia, Expression<Func<T, TProperty>> property) where T : class
+        {
+            Contexto.Entry(instancia).Property(property).IsModified = false;
+        }
     }
 
 
