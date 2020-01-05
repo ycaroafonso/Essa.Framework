@@ -69,7 +69,14 @@
             Titulo = titulo;
             OnClick = onclick;
         }
+        public DropDownItem(object id, string titulo, string onclick)
+        {
+            Id = id;
+            Titulo = titulo;
+            OnClick = onclick;
+        }
 
+        public object Id { get; set; }
         public string Titulo { get; set; }
         public string OnClick { get; set; }
 
