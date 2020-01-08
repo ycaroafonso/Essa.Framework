@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Runtime.Remoting.Messaging;
@@ -165,7 +166,12 @@
 
         public void NaoAlterar<T, TProperty>(T instancia, Expression<Func<T, TProperty>> property) where T : class
         {
-            Contexto.Entry(instancia).Property(property).IsModified = false;
+            Propriedade(instancia, property).IsModified = false;
+        }
+
+        public DbPropertyEntry<T, TProperty> Propriedade<T, TProperty>(T instancia, Expression<Func<T, TProperty>> property) where T : class
+        {
+            return Contexto.Entry(instancia).Property(property);
         }
     }
 
