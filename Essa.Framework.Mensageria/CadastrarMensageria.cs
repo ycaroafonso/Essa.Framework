@@ -4,6 +4,7 @@
     using RabbitMQ.Client;
     using RabbitMQ.Client.Events;
     using System;
+    using System.Collections.Generic;
 
     public class CadastrarMensageria : IDisposable
     {
@@ -19,13 +20,18 @@
             _channel = _connection.CreateModel();
 
             _queue = queue;
+        }
 
-            _channel.QueueDeclare(queue: queue,
+
+        public void CriarFila(bool autoDelete = false, IDictionary<string, object> arguments = null)
+        {
+            _channel.QueueDeclare(queue: _queue,
                      durable: true,
                      exclusive: false,
                      autoDelete: autoDelete,
-                     arguments: null);
+                     arguments: arguments);
         }
+
 
 
         private ulong CodigoRecebimento;
