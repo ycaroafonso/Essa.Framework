@@ -111,12 +111,12 @@
 
 
 
-    public interface IGenericRepository<T> : IGenericReadRepository<T>, IGenericIncluirRepository<T>, IGenericAlterarRepository<T>, IGenericExcluirRepository<T>, IGenericSalvarRepository
+    public interface IGenericRepository<T> : IGenericBaseRepository, IGenericReadRepository<T>, IGenericIncluirRepository<T>, IGenericAlterarRepository<T>, IGenericExcluirRepository<T>, IGenericSalvarRepository
         where T : class
     {
     }
 
-    public interface IGenericRepository : IGenericReadRepository, IGenericIncluirRepository, IGenericAlterarRepository, IGenericExcluirRepository, IGenericSalvarRepository
+    public interface IGenericRepository : IGenericBaseRepository, IGenericReadRepository, IGenericIncluirRepository, IGenericAlterarRepository, IGenericExcluirRepository, IGenericSalvarRepository
     {
     }
 }
