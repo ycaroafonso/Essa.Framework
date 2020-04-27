@@ -120,6 +120,8 @@
     <Compile Include="Helpers\JqGrid\JqGridReturnBuilder.cs" />
     <Compile Include="Helpers\Select2\Select2Builder.cs" />
     <Compile Include="Helpers\Select2\Select2Extensions.cs" />
+    <Compile Include="Helpers\StackAdminHelpers\StackAdminExtensions.cs" />
+    <Compile Include="Helpers\StackAdminHelpers\Portlet\CardBuilder.cs" />
     <Compile Include="Helpers\TreeView\TreeViewBuilder.cs" />
     <Compile Include="Helpers\Validate\ValidateBuilder.cs" />
     <Compile Include="Helpers\Validate\ValidateOptions.cs" />

@@ -42,6 +42,16 @@
             _request = request;
         }
 
+        public DataTablesReturnBuilder(IList<T> lista, IDataTablesRequest request)
+        {
+
+            _qtdeTotal = lista.Count();
+
+            _listaFiltrada = lista.AsQueryable<T>();
+
+            _request = request;
+        }
+
         public DataTablesReturnBuilder<T> AddFiltro(Expression<Func<T, bool>> filtro)
         {
             _listaFiltrada = _listaFiltrada.Where(filtro);

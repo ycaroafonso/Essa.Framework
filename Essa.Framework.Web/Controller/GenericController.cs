@@ -1,9 +1,13 @@
 ﻿namespace Essa.Framework.Web.Controller
 {
+    using DataTables.AspNet.Core;
+    using DataTables.AspNet.Mvc5;
+    using Essa.Framework.Util;
     using Framework.Util.Extensions;
     using Framework.Util.Models.Controller;
     using Helpers.JqGrid;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Validation;
@@ -143,6 +147,24 @@
         {
             return File(arq, "application/vnd.ms-excel");
         }
+
+
+
+
+
+
+        protected internal JsonResult DataTables(IDataTablesRequest request, IQueryable data, IQueryable filteredData, IEnumerable lista)
+        {
+            var response = DataTablesResponse.Create(request, data.Count(), filteredData.Count(), lista);
+            return new DataTablesJsonResult(response, JsonRequestBehavior.AllowGet);
+        }
+
+        protected internal JsonResult DataTables(IDataTablesRequest request, IQueryable data)
+        {
+            var response = DataTablesResponse.Create(request, data.Count(), data.Count(), data);
+            return new DataTablesJsonResult(response, JsonRequestBehavior.AllowGet);
+        }
+
 
 
     }
