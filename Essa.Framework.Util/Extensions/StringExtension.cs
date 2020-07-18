@@ -832,7 +832,7 @@
 
         public static byte[] ToByteArray(this string str)
         {
-            return System.Text.Encoding.ASCII.GetBytes(str);
+            return Encoding.UTF8.GetBytes(str);
         }
 
         public static T ToOject<T>(this string valor) where T : class
