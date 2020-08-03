@@ -1,15 +1,14 @@
-﻿namespace Essa.Framework.Web.Helpers.DataTables
+﻿namespace SENAR.Framework.Web.Helpers.DataTables
 {
+    using Essa.Framework.Util;
     using global::DataTables.AspNet.Core;
     using global::DataTables.AspNet.Mvc5;
-    using Essa.Framework.Util;
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Web.Mvc;
-    using static Essa.Framework.Web.Helpers.DataTables.DataTablesUtil;
+    using static SENAR.Framework.Web.Helpers.DataTables.DataTablesUtil;
 
 
     public static class DataTablesUtil
@@ -38,16 +37,6 @@
             _qtdeTotal = lista.Count();
 
             _listaFiltrada = lista;
-
-            _request = request;
-        }
-
-        public DataTablesReturnBuilder(IList<T> lista, IDataTablesRequest request)
-        {
-
-            _qtdeTotal = lista.Count();
-
-            _listaFiltrada = lista.AsQueryable<T>();
 
             _request = request;
         }

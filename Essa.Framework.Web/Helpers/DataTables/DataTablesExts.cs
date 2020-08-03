@@ -2,7 +2,7 @@
 using DataTables.AspNet.Core;
 using Newtonsoft.Json.Linq;
 
-namespace Essa.Framework.Web.Helpers.DataTables
+namespace SENAR.Framework.Web.Helpers.DataTables
 {
     public static class DataTablesExts
     {
