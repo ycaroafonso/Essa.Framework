@@ -164,9 +164,13 @@
         }
 
 
-        public void NaoAlterar<T, TProperty>(T instancia, Expression<Func<T, TProperty>> property) where T : class
+
+
+
+
+        public void PropriedadeParaAlterar<T, TProperty>(T instancia, Expression<Func<T, TProperty>> property, bool ismodified = true) where T : class
         {
-            Propriedade(instancia, property).IsModified = false;
+            Propriedade(instancia, property).IsModified = ismodified;
         }
 
         public DbPropertyEntry<T, TProperty> Propriedade<T, TProperty>(T instancia, Expression<Func<T, TProperty>> property) where T : class
@@ -251,6 +255,15 @@
 
             return this;
         }
+
+
+
+
+        public void PropriedadeParaAlterar<TProperty>(T instancia, Expression<Func<T, TProperty>> property, bool ismodified = true)
+        {
+            Propriedade(instancia, property).IsModified = ismodified;
+        }
+
 
 
         #region Plus
