@@ -1,8 +1,0 @@
-{
-  "globalDependencies": {
-    "jquery": "registry:dt/jquery#1.10.0+20170310222111",
-    "jquery.blockui": "registry:dt/jquery.blockui#0.0.0+20161128184045",
-    "jquery.noty": "registry:dt/jquery.noty#2.4.0+20170130184919",
-    "moment": "registry:dt/moment#2.11.1+20161010105546"
-  }
-}
