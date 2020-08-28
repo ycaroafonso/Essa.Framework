@@ -101,11 +101,18 @@
 
         private string ProcessaValor(string valor)
         {
-            int n;
-            if (valor.Contains("DateTime") || int.TryParse(valor, out n))
-                return valor;
-            else
-                return "\"" + valor + "\"";
+            switch (valor)
+            {
+                case "true":
+                case "false":
+                    return valor;
+                default:
+                    int n;
+                    if (valor.Contains("DateTime") || int.TryParse(valor, out n))
+                        return valor;
+                    else
+                        return "\"" + valor + "\"";
+            }
         }
     }
 }
