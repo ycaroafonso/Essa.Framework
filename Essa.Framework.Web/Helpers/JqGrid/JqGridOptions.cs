@@ -136,7 +136,7 @@ namespace Essa.Framework.Web.Helpers.JqGrid
         private string _recordText;
         private RequestType? _requestType;
         private string _resizeClass;
-        private int[] _rowList;
+        public int[] rowList;
         //private int? _rowNum;
         public bool? rownumbers;
         public int? rownumWidth;
@@ -661,7 +661,7 @@ function (sub_grid_id, row_id) {
         /// <param name="rowList">List of rows per page</param>
         public JqGridOptions setRowList(int[] rowList)
         {
-            this._rowList = rowList;
+            this.rowList = rowList;
             return this;
         }
 
@@ -1299,7 +1299,7 @@ function (sub_grid_id, row_id) {
             if (!string.IsNullOrWhiteSpace(this._resizeClass)) script.AppendFormat("resizeclass: '{0}',", this._resizeClass).AppendLine();
 
             // Rowlist
-            if (this._rowList != null) script.AppendFormat("rowList: [{0}],", string.Join(",", ((from p in this._rowList select p.ToString()).ToArray()))).AppendLine();
+            if (this.rowList != null) script.AppendFormat("rowList: [{0}],", string.Join(",", ((from p in this.rowList select p.ToString()).ToArray()))).AppendLine();
 
             //// Rownum
             //if (this._rowNum.HasValue) script.AppendFormat("rowNum:{0},", this._rowNum.Value).AppendLine();
