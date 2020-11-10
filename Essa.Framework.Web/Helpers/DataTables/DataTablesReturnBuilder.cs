@@ -1,4 +1,4 @@
-﻿namespace SENAR.Framework.Web.Helpers.DataTables
+﻿namespace Essa.Framework.Web.Helpers.DataTables
 {
     using Essa.Framework.Util;
     using global::DataTables.AspNet.Core;
@@ -8,7 +8,7 @@
     using System.Linq;
     using System.Linq.Expressions;
     using System.Web.Mvc;
-    using static SENAR.Framework.Web.Helpers.DataTables.DataTablesUtil;
+    using static Essa.Framework.Web.Helpers.DataTables.DataTablesUtil;
 
 
     public static class DataTablesUtil
@@ -139,12 +139,18 @@
             var qtdeFiltrado = _listaFiltrada.Count();
 
             var sortColumm = _request.Columns.FirstOrDefault(x => x.Sort != null);
+            if (sortColumm != null)
+            {
+                if (sortColumm.Sort.Direction == SortDirection.Descending)
+                    _listaFiltrada = _listaFiltrada.OrderBy(sortColumm.Name + " desc");
+                else
+                    _listaFiltrada = _listaFiltrada.OrderBy(sortColumm.Name);
 
-            if (sortColumm.Sort.Direction == SortDirection.Descending)
-                _listaFiltrada = _listaFiltrada.OrderBy(sortColumm.Name + " desc").Skip(_request.Start).Take(_request.Length);
-            else
-                _listaFiltrada = _listaFiltrada.OrderBy(sortColumm.Name).Skip(_request.Start).Take(_request.Length);
+                _listaFiltrada = _listaFiltrada.Skip(_request.Start);
 
+                if (_request.Length > 0)
+                    _listaFiltrada = _listaFiltrada.Take(_request.Length);
+            }
 
             var listaFinal = _listaFiltrada.ToList().Select(select);
 
