@@ -1,5 +1,6 @@
 ﻿namespace Essa.Framework.Web.Helpers.Metronic
 {
+    using Essa.Framework.Web.Helpers.Metronic.Modal;
     using Essa.Framework.Web.Helpers.Metronic.Tabs;
     using System.Web.Mvc;
 
@@ -33,5 +34,19 @@
         {
             return new LineTabsBuilder(_htmlHelper.ViewContext, _id, indexAbaAtiva);
         }
+
+
+
+
+        public IModalAddBotao ModalGrande(string tituloModal)
+        {
+            return new ModalBuilder(_id, _htmlHelper.ViewContext).ModalGrande(tituloModal);
+        }
+
+        public IModalAddBotao Modal(string tituloModal)
+        {
+            return new ModalBuilder(_id, _htmlHelper.ViewContext).Modal(tituloModal);
+        }
+
     }
 }

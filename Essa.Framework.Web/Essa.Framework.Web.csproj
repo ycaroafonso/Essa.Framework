@@ -118,7 +118,9 @@
     <Compile Include="Helpers\JqGrid\JqGridExtensions.cs" />
     <Compile Include="Helpers\JqGrid\JqGridOptions.cs" />
     <Compile Include="Helpers\JqGrid\JqGridReturnBuilder.cs" />
+    <Compile Include="Helpers\Metronic\DropDown\DropDownBuilder.cs" />
     <Compile Include="Helpers\Metronic\MetronicExtensions.cs" />
+    <Compile Include="Helpers\Metronic\Modal\ModalBuilder.cs" />
     <Compile Include="Helpers\Metronic\Tabs\LineTabsBuilder.cs" />
     <Compile Include="Helpers\Select2\Select2Builder.cs" />
     <Compile Include="Helpers\Select2\Select2Extensions.cs" />

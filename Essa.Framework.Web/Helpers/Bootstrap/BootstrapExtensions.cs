@@ -40,16 +40,7 @@
             return new TabsBuilder(_htmlHelper.ViewContext, _id, indexAbaAtiva);
         }
 
-        public MvcHtmlString BotaoComModalAjax(string tituloBotao, string url, Action<IModalAddBotao> config = null)
-        {
-            return new ModalBuilder(_id).BotaoComModalAjax(tituloBotao, url, config);
-        }
-
-        public IModalAddBotao BotaoComModalSimples(string tituloBotao, string tituloModal, object htmlAttributesBotao = null)
-        {
-            return new ModalBuilder(_id, _htmlHelper.ViewContext).BotaoComModalSimples(tituloBotao, tituloModal, htmlAttributesBotao);
-        }
-
+   
         public IModalAddBotao ModalGrande(string tituloModal)
         {
             return new ModalBuilder(_id, _htmlHelper.ViewContext).ModalGrande(tituloModal);
