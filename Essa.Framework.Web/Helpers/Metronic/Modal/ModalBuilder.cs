@@ -70,7 +70,7 @@
 
 
             attr["id"] = attr["id"] ?? id;
-            attr["class"] = attr["class"] ?? "btn";
+            attr["class"] = attr["class"] ?? "btn btn-default";
             attr["type"] = attr["type"] ?? "button";
 
             string parametros = attr.ParametrosParaString();
