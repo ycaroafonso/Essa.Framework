@@ -74,7 +74,7 @@
         /// <summary>
         /// Informe o método javascript
         /// </summary>
-        /// <param name="valor">Exemplo: function (cellValue, options, rowObject) { return ...; }</param>
+        /// <param name="valor">Exemplo: function (data, type, row, meta) { return ...; }</param>
         /// <returns></returns>
         public JqGridColumn SetFormatter(string metodoJavascript)
         {
