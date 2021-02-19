@@ -5,6 +5,8 @@
     using RabbitMQ.Client.Events;
     using System;
     using System.Collections.Generic;
+    using System.Text;
+
 
     public class CadastrarMensageria : IDisposable
     {
@@ -13,9 +15,10 @@
         private IModel _channel;
         string _queue;
 
+
         public CadastrarMensageria(string queue, bool autoDelete = false)
         {
-            _factory = new ConnectionFactory() { HostName = "localhost" };
+            _factory = new ConnectionFactory() { HostName = "127.0.0.1", UserName = "guest", Password = "guest" };
             _connection = _factory.CreateConnection();
             _channel = _connection.CreateModel();
 
@@ -25,7 +28,12 @@
 
         public void CriarFila(bool autoDelete = false, IDictionary<string, object> arguments = null)
         {
-            _channel.QueueDeclare(queue: _queue,
+            CriarFila(_queue, autoDelete, arguments);
+        }
+
+        public void CriarFila(string queue, bool autoDelete = false, IDictionary<string, object> arguments = null)
+        {
+            _channel.QueueDeclare(queue: queue,
                      durable: true,
                      exclusive: false,
                      autoDelete: autoDelete,
@@ -34,16 +42,12 @@
 
 
 
-        private ulong CodigoRecebimento;
-
-        public void Receber(Action<byte[]> received)
+        public void Receber(Action<ulong, byte[]> received)
         {
             var consumer = new EventingBasicConsumer(_channel);
             consumer.Received += (model, ea) =>
             {
-                CodigoRecebimento = ea.DeliveryTag;
-
-                received(ea.Body);
+                received(ea.DeliveryTag, ea.Body);
             };
 
             _channel.BasicConsume(queue: _queue,
@@ -52,14 +56,18 @@
         }
 
 
-
-
-
-
-
-        public void ConfirmarRecebimento()
+        public void Receber<T>(Action<ulong, T> received)
         {
-            _channel.BasicAck(CodigoRecebimento, false);
+            Receber((t, c) => received(t, Encoding.UTF8.GetString(c, 0, c.Length).ToOjectFromJson<T>()));
+        }
+
+
+
+
+
+        public void ConfirmarRecebimento(ulong deliveryTag)
+        {
+            _channel.BasicAck(deliveryTag, false);
         }
 
 
