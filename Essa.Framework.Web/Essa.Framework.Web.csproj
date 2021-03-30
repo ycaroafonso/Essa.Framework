@@ -73,6 +73,8 @@
     <Compile Include="Extensions\HtmlExtensions.cs" />
     <Compile Include="Extensions\RouteValueDictionaryExtensions.cs" />
     <Compile Include="Extensions\UtilExtensions.cs" />
+    <Compile Include="Helpers\Bootstrap5\BootstrapExtensions.cs" />
+    <Compile Include="Helpers\Bootstrap5\Modal\ModalBuilder.cs" />
     <Compile Include="Helpers\Bootstrap4\BootstrapExtensions.cs" />
     <Compile Include="Helpers\Bootstrap4\Modal\ModalBuilder.cs" />
     <Compile Include="Helpers\Bootstrap\Accordion\AccordionBuilder.cs" />
