@@ -68,7 +68,7 @@
 
             SetHtmlAttributesIfNull("style", "width: 100%");
             SetHtmlAttributesIfNull("class", "form-control");
-            SetHtmlAttributesIfNull("name", _idControle + (_select2Options.multiple ? "[]" : string.Empty));
+            SetHtmlAttributesIfNull("name", (_htmlAttributes["name"] ?? _idControle) + (_select2Options.multiple ? "[]" : string.Empty));
         }
 
 

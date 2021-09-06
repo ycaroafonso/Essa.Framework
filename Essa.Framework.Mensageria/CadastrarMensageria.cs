@@ -5,6 +5,7 @@
     using RabbitMQ.Client.Events;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
 
@@ -16,15 +17,65 @@
         string _queue;
 
 
-        public CadastrarMensageria(string queue, bool autoDelete = false)
+        public enum LocalRabbitMqEnum
         {
-            _factory = new ConnectionFactory() { HostName = "127.0.0.1", UserName = "guest", Password = "guest" };
-            _connection = _factory.CreateConnection();
-            _channel = _connection.CreateModel();
+            Localhost,
+            CloudAmqp,
+            Customizado
+        }
+
+
+        public CadastrarMensageria(string queue)
+        {
+            _queue = queue;
+        }
+
+        public CadastrarMensageria(string queue, string stringconexao)
+        {
+            _queue = queue;
+            Conecta(stringconexao);
+        }
+
+        public CadastrarMensageria(string queue, LocalRabbitMqEnum localRabbitMq)// = LocalRabbitMqEnum.Localhost
+        {
+            switch (localRabbitMq)
+            {
+                case LocalRabbitMqEnum.Localhost:
+                    Conecta("localhost", "guest", "guest");
+                    break;
+                default:
+                    break;
+            }
 
             _queue = queue;
         }
 
+
+
+        public void Conecta(string hostname, string userName, string password, string virtualHost = null, bool autoDelete = false)
+        {
+            _factory = new ConnectionFactory() { HostName = hostname, UserName = userName, Password = password, VirtualHost = virtualHost };
+
+            _connection = _factory.CreateConnection();
+            _channel = _connection.CreateModel();
+        }
+
+
+        public void Conecta(string conexao)
+        {
+            var url = new Uri(conexao);
+
+            _factory = new ConnectionFactory()
+            {
+                HostName = url.Authority,
+                UserName = url.UserInfo.Split(':')[0],
+                Password = url.UserInfo.Split(':')[1],
+                VirtualHost = url.LocalPath.Replace("/", "")
+            };
+
+            _connection = _factory.CreateConnection();
+            _channel = _connection.CreateModel();
+        }
 
         public void CriarFila(bool autoDelete = false, IDictionary<string, object> arguments = null)
         {
@@ -47,7 +98,7 @@
             var consumer = new EventingBasicConsumer(_channel);
             consumer.Received += (model, ea) =>
             {
-                received(ea.DeliveryTag, ea.Body);
+                received(ea.DeliveryTag, ea.Body.ToArray());
             };
 
             _channel.BasicConsume(queue: _queue,
