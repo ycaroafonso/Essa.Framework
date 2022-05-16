@@ -15,10 +15,6 @@ namespace Util.Excel
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Xml;
-    using System.IO;
 
     public class Style : Element
     {
@@ -104,7 +100,7 @@ namespace Util.Excel
             try
             {
                 _type = ElementType.Style;
-                
+
                 if (!string.IsNullOrEmpty(id))
                     _id = id;
 
@@ -116,7 +112,7 @@ namespace Util.Excel
 
                 if (!string.IsNullOrEmpty(value))
                     Value = value;
-                
+
                 if (attributes != null)
                     CustomAttributes = attributes;
             }

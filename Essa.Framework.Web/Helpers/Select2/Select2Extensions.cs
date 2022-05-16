@@ -1,11 +1,10 @@
 ﻿namespace Essa.Framework.Web.Helpers.Select2
 {
+    using Framework.Util.Models.Helpers.Select2;
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
-    using System.Linq;
     using System.Web.Mvc;
-    using Framework.Util.Models.Helpers.Select2;
 
     public static class Select2Extensions
     {
@@ -47,7 +46,7 @@
         {
             return new Select2Builder(id, htmlAttributes).Config(c => select2Options(c)).SetSelectList(itens).Montar();
         }
-        
+
         public static MvcHtmlString Select2<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes = null)
         {
             string name = ExpressionHelper.GetExpressionText(expression);

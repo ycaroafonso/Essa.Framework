@@ -17,8 +17,6 @@ namespace Util.Excel
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     public class Borders : Element
     {
@@ -44,16 +42,16 @@ namespace Util.Excel
             try
             {
                 _type = ElementType.Borders;
-                if(borders != null)
+                if (borders != null)
                 {
 
-                    foreach(Border b in borders)
+                    foreach (Border b in borders)
                     {
                         AddElement(b);
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -67,12 +65,12 @@ namespace Util.Excel
         {
             try
             {
-                if(Elements == null)
+                if (Elements == null)
                     Elements = new List<object>();
 
                 Elements.Add(nElement);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -80,7 +78,7 @@ namespace Util.Excel
 
         ~Borders()
         {
-            if(Elements != null)
+            if (Elements != null)
                 Elements.Clear();
         }
     }

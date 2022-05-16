@@ -44,7 +44,7 @@ namespace DataTables.AspNet.Mvc5
         /// Gets sort order.
         /// </summary>
         public int Order { get; private set; }
-        
+
 
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace DataTables.AspNet.Mvc5
         {
             Field = field ?? "";
             Order = order;
-            
+
             Direction = (direction ?? "").ToLowerInvariant().Equals(DataTables.AspNet.Mvc5.Configuration.Options.RequestNameConvention.SortDescending)
                 ? SortDirection.Descending // Descending sort should be explicitly set.
                 : SortDirection.Ascending; // Default (when set or not) is ascending sort.

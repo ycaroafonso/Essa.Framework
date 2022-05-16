@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MixERP.Net.VCards.Extensions;
+﻿using MixERP.Net.VCards.Extensions;
 using MixERP.Net.VCards.Lookups;
 using MixERP.Net.VCards.Models;
 using MixERP.Net.VCards.Types;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace MixERP.Net.VCards.Processors
 {
@@ -59,7 +59,7 @@ namespace MixERP.Net.VCards.Processors
             telephone.Type = TelephoneTypeLookup.Parse(type.Value);
             telephone.Number = token.Values[0];
 
-            var telephones = (List<Telephone>) vcard.Telephones ?? new List<Telephone>();
+            var telephones = (List<Telephone>)vcard.Telephones ?? new List<Telephone>();
             telephones.Add(telephone);
             vcard.Telephones = telephones;
         }

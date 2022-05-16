@@ -139,7 +139,7 @@
 			</div>
 			<div class=""modal-body"">", _id, tituloModal);
         }
-         
+
         private string Parte2()
         {
             string html = @"</div><div class=""modal-footer"">";

@@ -6,7 +6,7 @@
         {
             IPI_pIpi = "0";
             IPI_vIpi = "0";
-            IPI_vBC = "0";            
+            IPI_vBC = "0";
             pICMS = "0";
         }
 
@@ -27,16 +27,16 @@
 
         public string IndicadorComposicaoValorTotalNFe { get; set; }
 
-        public string CodigoEANComercial { get; set; }        
+        public string CodigoEANComercial { get; set; }
         public string QuantidadeComercial { get; set; }
-        
+
         public string CodigoEANTributavel { get; set; }
         public string UnidadeTributavel { get; set; }
         public string QuantidadeTributavel { get; set; }
 
         public string ValorUnitarioComercializacao { get; set; }
         public string ValorUnitarioTributacao { get; set; }
-        
+
         public string NumeroPedidoDeCompra { get; set; }
         public string ItemPedidoCompra { get; set; }
         public string ValorAproximadoTributos { get; set; }

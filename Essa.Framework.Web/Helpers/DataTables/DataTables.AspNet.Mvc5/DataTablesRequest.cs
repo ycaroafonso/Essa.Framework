@@ -41,7 +41,7 @@ namespace DataTables.AspNet.Mvc5
         public int Start { get; private set; }
 
         public DataTablesRequest(int draw, int start, int length, Core.ISearch search, IEnumerable<Core.IColumn> columns)
-            :this(draw, start, length, search, columns, null)
+            : this(draw, start, length, search, columns, null)
         { }
         public DataTablesRequest(int draw, int start, int length, Core.ISearch search, IEnumerable<Core.IColumn> columns, IDictionary<string, object> additionalParameters)
         {

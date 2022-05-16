@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MixERP.Net.VCards.Extensions;
+﻿using MixERP.Net.VCards.Extensions;
 using MixERP.Net.VCards.Lookups;
 using MixERP.Net.VCards.Models;
 using MixERP.Net.VCards.Serializer;
 using MixERP.Net.VCards.Types;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace MixERP.Net.VCards.Processors
 {
@@ -69,7 +69,7 @@ namespace MixERP.Net.VCards.Processors
             language.Type = LanguageTypeLookup.Parse(type.Value);
             language.Name = token.Values[0];
 
-            var emails = (List<Language>) vcard.Languages ?? new List<Language>();
+            var emails = (List<Language>)vcard.Languages ?? new List<Language>();
             emails.Add(language);
             vcard.Languages = emails;
         }

@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace NFeDownload.NFe.SchemaXML
+﻿namespace NFeDownload.NFe.SchemaXML
 {
     public interface ITEventoInfEventoDetEvento
     {

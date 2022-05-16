@@ -16,8 +16,6 @@ namespace Util.Excel
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;    
 
     public class Element : IDisposable
     {
@@ -53,7 +51,7 @@ namespace Util.Excel
         /// </summary>
         /// <param name="eType">Tipo de elemento</param>
         public Element(string eType) : this(eType, null)
-        {   
+        {
         }
 
         /// <summary>
@@ -61,13 +59,13 @@ namespace Util.Excel
         /// </summary>
         /// <param name="eType">Tipo de elemento</param>
         /// <param name="attributes">Atributos customizados para o elemento</param>
-        public Element(string eType, Dictionary<string,string> attributes)
+        public Element(string eType, Dictionary<string, string> attributes)
         {
             try
             {
-                ElementType t = (ElementType)Enum.Parse(typeof(ElementType),eType);
-                
-                if( t != null || string.IsNullOrEmpty(eType))
+                ElementType t = (ElementType)Enum.Parse(typeof(ElementType), eType);
+
+                if (t != null || string.IsNullOrEmpty(eType))
                 {
                     throw new Exception("Tipo inválido para o elemento.");
                 }
@@ -76,16 +74,16 @@ namespace Util.Excel
                     _type = t;
                 }
 
-                if(attributes != null)
+                if (attributes != null)
                 {
                     CustomAttributes = attributes;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
-            
+
         }
 
         /// <summary>
@@ -97,34 +95,34 @@ namespace Util.Excel
         {
             try
             {
-                if(CustomAttributes == null)
+                if (CustomAttributes == null)
                 {
                     CustomAttributes = new Dictionary<string, string>();
                 }
                 CustomAttributes.Add(name, value);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
         }
-        
+
         #region IDisposable Members
 
         public void Dispose()
         {
-            if(CustomAttributes != null)
+            if (CustomAttributes != null)
             {
                 CustomAttributes.Clear();
                 CustomAttributes = null;
             }
-            
+
             _value = null;
-            GC.SuppressFinalize(this);            
+            GC.SuppressFinalize(this);
         }
 
         #endregion
-        
+
         ~Element()
         {
             Dispose();

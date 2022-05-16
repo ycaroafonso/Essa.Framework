@@ -17,8 +17,6 @@ namespace Util.Excel
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     public class Cell : Element
     {
@@ -36,7 +34,7 @@ namespace Util.Excel
             get;
             set;
         }
-        
+
         /// <summary>
         /// Id do estilo
         /// </summary>
@@ -70,7 +68,7 @@ namespace Util.Excel
 
         public Cell(int? index)
             : this(index, null, null, null)
-        { 
+        {
         }
         /// <summary>
         /// Construtor
@@ -145,13 +143,13 @@ namespace Util.Excel
                 Formula = formula ?? null;
                 MergeAcross = mergeAcross ?? null;
 
-                if(elements != null)
+                if (elements != null)
                 {
-                    foreach(Element elem in elements)
+                    foreach (Element elem in elements)
                         AddElement(elem);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -165,12 +163,12 @@ namespace Util.Excel
         {
             try
             {
-                if(Elements == null)
+                if (Elements == null)
                     Elements = new List<object>();
 
                 Elements.Add(nElement);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -178,7 +176,7 @@ namespace Util.Excel
 
         ~Cell()
         {
-            if(Elements != null)
+            if (Elements != null)
                 Elements.Clear();
         }
     }

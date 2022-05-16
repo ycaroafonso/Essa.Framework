@@ -6,7 +6,7 @@ namespace MixERP.Net.VCards.Processors
     {
         public static string Serialize(VCard vcard)
         {
-            if(vcard.BirthDay == null)
+            if (vcard.BirthDay == null)
             {
                 return string.Empty;
             }

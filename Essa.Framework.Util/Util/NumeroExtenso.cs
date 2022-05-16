@@ -12,7 +12,7 @@
             Porcentagem,
             Decimal
         }
-        
+
         // O método toExtenso recebe um valor do tipo decimal
         public string Converter(decimal valor, TipoValorExtenso tipoValorExtenso)
         {

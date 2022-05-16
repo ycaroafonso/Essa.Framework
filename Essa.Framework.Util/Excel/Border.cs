@@ -14,11 +14,6 @@
 
 namespace Util.Excel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     public class Border : Element
     {
         /// <summary>
@@ -49,12 +44,12 @@ namespace Util.Excel
         /// <param name="position">Posição da Borda</param>
         /// <param name="LineStyle">Estilo da linha</param>
         /// <param name="weight"></param>
-        public Border (string position, string lineStyle, int? weight)
+        public Border(string position, string lineStyle, int? weight)
         {
             _type = ElementType.Border;
             Position = position.Trim() ?? null;
             LineStyle = lineStyle.Trim() ?? null;
             Weight = weight ?? null;
-        }        
+        }
     }
 }

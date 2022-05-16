@@ -5,7 +5,6 @@
 //29/11/2012 : campo tOrig - incluido valores {3,4,5,6,7}
 
 
-using System.Xml.Serialization;
 using NFeDownload.NFe.SchemaXML;
 
 namespace NFeDownload.NFe.SchemaXML200

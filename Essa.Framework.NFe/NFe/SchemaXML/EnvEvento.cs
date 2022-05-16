@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace NFeDownload.NFe.SchemaXML200
+﻿namespace NFeDownload.NFe.SchemaXML200
 {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.42")]

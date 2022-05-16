@@ -2,7 +2,7 @@
 {
     using System;
     using System.Text;
-    
+
     public static class EncryptParam
     {
         public static string Encrypt(string stringToEncrypt)

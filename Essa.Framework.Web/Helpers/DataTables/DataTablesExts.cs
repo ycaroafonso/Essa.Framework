@@ -1,6 +1,6 @@
-﻿using System;
-using DataTables.AspNet.Core;
+﻿using DataTables.AspNet.Core;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace Essa.Framework.Web.Helpers.DataTables
 {

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MixERP.Net.VCards.Extensions;
+﻿using MixERP.Net.VCards.Extensions;
 using MixERP.Net.VCards.Models;
 using MixERP.Net.VCards.Serializer;
 using MixERP.Net.VCards.Types;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace MixERP.Net.VCards.Processors
 {
@@ -34,7 +34,7 @@ namespace MixERP.Net.VCards.Processors
 
             foreach (var impp in vcard.Impps)
             {
-                if(impp.Address == null)
+                if (impp.Address == null)
                 {
                     continue;
                 }
@@ -65,7 +65,7 @@ namespace MixERP.Net.VCards.Processors
             impp.Preference = preference.Value.ConvertTo<int>();
             impp.Address = new Uri(token.Values[0], UriKind.RelativeOrAbsolute);
 
-            var impps = (List<Impp>) vcard.Impps ?? new List<Impp>();
+            var impps = (List<Impp>)vcard.Impps ?? new List<Impp>();
             impps.Add(impp);
             vcard.Impps = impps;
         }

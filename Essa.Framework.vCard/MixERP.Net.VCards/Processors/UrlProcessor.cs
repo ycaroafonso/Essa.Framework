@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using MixERP.Net.VCards.Models;
 using MixERP.Net.VCards.Serializer;
 using MixERP.Net.VCards.Types;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MixERP.Net.VCards.Processors
 {
@@ -11,7 +11,7 @@ namespace MixERP.Net.VCards.Processors
     {
         public static string Serialize(VCard vcard)
         {
-            if(vcard.Url == null)
+            if (vcard.Url == null)
             {
                 return string.Empty;
             }
@@ -33,7 +33,7 @@ namespace MixERP.Net.VCards.Processors
 
             foreach (var uri in uris)
             {
-                if(uri == null)
+                if (uri == null)
                 {
                     continue;
                 }

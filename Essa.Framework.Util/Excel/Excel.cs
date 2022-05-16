@@ -16,12 +16,11 @@ namespace Util.Excel
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Reflection;
     using System.Text;
     using System.Xml;
-    using System.IO;
-    using System.Reflection;
-    using System.Data.Common;
 
     public class Excel : IDisposable
     {
@@ -35,7 +34,7 @@ namespace Util.Excel
         /// </summary>
         private XmlTextWriter xml;
 
-        
+
         /// <summary>
         /// Doc em XML
         /// </summary>
@@ -86,7 +85,7 @@ namespace Util.Excel
                 Extension = extension;
                 FilePath = filePath;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Erro ao criar/abrir o arquiquivo" + ex.Message);
             }
@@ -124,7 +123,7 @@ namespace Util.Excel
                 xml.WriteAttributeString("xmlns:ss", "urn:schemas-microsoft-com:office:spreadsheet");
                 xml.WriteAttributeString("xmlns:html", "http://www.w3.org/TR/REC-html40");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new Exception("Erro ao cria arquivo: " + e.Message);
             }
@@ -161,13 +160,13 @@ namespace Util.Excel
             try
             {
                 Start();
-                foreach(Element item in Elements)
+                foreach (Element item in Elements)
                 {
                     CreateElement(item);
                 }
                 End();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -216,7 +215,7 @@ namespace Util.Excel
             {
                 AddElement(nStyles);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -234,12 +233,12 @@ namespace Util.Excel
         {
             try
             {
-                if(Elements == null)
+                if (Elements == null)
                     Elements = new List<object>();
 
                 Elements.Add(nElement);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -256,31 +255,31 @@ namespace Util.Excel
                 string sType = nElement.GetType().Name;
                 Dictionary<string, string> tAttrs = (Dictionary<string, string>)nElement.CustomAttributes;
                 var properties = nElement.GetType().GetProperties();
-                if(tAttrs == null)
+                if (tAttrs == null)
                     tAttrs = new Dictionary<string, string>();
 
-                foreach(PropertyInfo prop in properties)
+                foreach (PropertyInfo prop in properties)
                 {
-                    if(prop.Name.Equals("Value") || prop.PropertyType.IsInterface)
+                    if (prop.Name.Equals("Value") || prop.PropertyType.IsInterface)
                         continue;
 
                     MethodInfo getter = prop.GetGetMethod();
                     Object val = getter.Invoke(nElement, null);
 
-                    if(val != null)
+                    if (val != null)
                     {
                         tAttrs.Add(prop.Name.Replace('_', ':'), Convert.ToString(val));
                     }
                 }
 
                 FieldInfo elements = nElement.GetType().GetField("Elements") ?? null;
-                if(elements != null)
+                if (elements != null)
                 {
                     CreateElement(sType, null, null, tAttrs, nElement.Value, false);
                     IList<Object> lElements = (List<Object>)elements.GetValue(nElement);
-                    if(lElements != null)
+                    if (lElements != null)
                     {
-                        foreach(Element e in lElements.OrderBy(e => e.GetType().Name))
+                        foreach (Element e in lElements.OrderBy(e => e.GetType().Name))
                             CreateElement(e);
                     }
                     EndElement();
@@ -291,7 +290,7 @@ namespace Util.Excel
                 }
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -312,40 +311,40 @@ namespace Util.Excel
             {
                 xml.WriteStartElement(type);
 
-                if(!string.IsNullOrEmpty(id))
+                if (!string.IsNullOrEmpty(id))
                     xml.WriteAttributeString("ss:ID", id);
-                if(!string.IsNullOrEmpty(name))
+                if (!string.IsNullOrEmpty(name))
                     xml.WriteAttributeString("ss:Name", name);
 
-                if(attributes != null)
+                if (attributes != null)
                 {
-                    foreach(KeyValuePair<string, string> attr in attributes)
+                    foreach (KeyValuePair<string, string> attr in attributes)
                     {
                         string val;
-                        switch(attr.Value.ToLower())
+                        switch (attr.Value.ToLower())
                         {
                             case "true":
                                 val = "1";
-                            break;
+                                break;
                             case "false":
                                 val = "0";
-                            break;
+                                break;
                             default:
                                 val = attr.Value;
-                            break;
-                        }                        
+                                break;
+                        }
                         xml.WriteAttributeString((attr.Key.Contains(":") || attr.Key.Contains("xmlns")) ? attr.Key : "ss:" + attr.Key, val);
                     }
                 }
-                if(value != null)
+                if (value != null)
                 {
                     xml.WriteValue(value);
                 }
 
-                if(endTag)
+                if (endTag)
                     xml.WriteEndElement();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -373,7 +372,7 @@ namespace Util.Excel
             {
                 AddElement(nWorkSheet);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -383,7 +382,7 @@ namespace Util.Excel
 
         ~Excel()
         {
-            if(Elements != null)
+            if (Elements != null)
                 Elements.Clear();
         }
 

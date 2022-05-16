@@ -15,9 +15,6 @@
 namespace Util.Excel
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     public class Data : Element
     {
@@ -37,7 +34,7 @@ namespace Util.Excel
         /// <param name="type">tipo de dados. ex(string, number, etc)</param>
         public Data(string type)
             : this(type, null, null)
-        {   
+        {
         }
 
         /// <summary>
@@ -65,7 +62,7 @@ namespace Util.Excel
                 Value = value ?? null;
                 Xmlns = xmlns ?? null;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }

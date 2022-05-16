@@ -16,9 +16,6 @@
 namespace Util.Excel
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     public class Column : Element
     {
@@ -104,10 +101,10 @@ namespace Util.Excel
                 Width = width ?? null;
                 Span = span ?? null;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
-            }            
+            }
         }
     }
 }

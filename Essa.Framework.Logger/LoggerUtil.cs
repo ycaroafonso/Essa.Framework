@@ -21,7 +21,7 @@
                 .Enrich.FromLogContext()
                 .Enrich.WithProperty("Sistema", nomePrograma)
                 .WriteTo.Console();
-            
+
             _nomePrograma = nomePrograma;
         }
 

@@ -7,7 +7,7 @@ namespace MixERP.Net.VCards.Processors
     {
         public static string Serialize(VCard vcard)
         {
-            if(vcard.Longitude == 0 && vcard.Latitude == 0)
+            if (vcard.Longitude == 0 && vcard.Latitude == 0)
             {
                 return string.Empty;
             }

@@ -14,15 +14,10 @@
 
 namespace Util.Excel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     public class Protection : Element
     {
         public Protection()
         {
-        }        
+        }
     }
 }

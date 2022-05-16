@@ -1,8 +1,8 @@
+using MixERP.Net.VCards.Models;
+using MixERP.Net.VCards.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MixERP.Net.VCards.Models;
-using MixERP.Net.VCards.Types;
 
 namespace MixERP.Net.VCards.Processors
 {
@@ -10,7 +10,7 @@ namespace MixERP.Net.VCards.Processors
     {
         public static string Serialize(VCard vcard)
         {
-            if(vcard.CalendarAddresses == null || vcard.CalendarAddresses.Count() == 0)
+            if (vcard.CalendarAddresses == null || vcard.CalendarAddresses.Count() == 0)
             {
                 return string.Empty;
             }
@@ -34,7 +34,7 @@ namespace MixERP.Net.VCards.Processors
 
             var uri = new Uri(value, UriKind.RelativeOrAbsolute);
 
-            var urls = (List<Uri>) vcard.CalendarAddresses ?? new List<Uri>();
+            var urls = (List<Uri>)vcard.CalendarAddresses ?? new List<Uri>();
             urls.Add(uri);
             vcard.CalendarAddresses = urls;
         }

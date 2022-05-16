@@ -23,9 +23,9 @@ THE SOFTWARE.
 */
 #endregion Copyright
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace DataTables.AspNet.Mvc5
 {
@@ -59,10 +59,10 @@ namespace DataTables.AspNet.Mvc5
         /// Gets aditional parameters for response.
         /// </summary>
         public IDictionary<string, object> AdditionalParameters { get; protected set; }
-        
-        
-        
-        
+
+
+
+
 
         /// <summary>
         /// Converts this object to a Json compatible response using global naming convention for parameters.
@@ -72,7 +72,7 @@ namespace DataTables.AspNet.Mvc5
         {
             using (var stringWriter = new System.IO.StringWriter())
             using (var jsonWriter = new JsonTextWriter(stringWriter))
-            {                 
+            {
                 if (IsSuccessResponse())
                 {
                     // Start json object.
@@ -97,7 +97,7 @@ namespace DataTables.AspNet.Mvc5
                     // AdditionalParameters
                     if (DataTables.AspNet.Mvc5.Configuration.Options.IsResponseAdditionalParametersEnabled && AdditionalParameters != null)
                     {
-                        foreach(var keypair in AdditionalParameters)
+                        foreach (var keypair in AdditionalParameters)
                         {
                             jsonWriter.WritePropertyName(keypair.Key, true);
                             jsonWriter.WriteValue(keypair.Value);

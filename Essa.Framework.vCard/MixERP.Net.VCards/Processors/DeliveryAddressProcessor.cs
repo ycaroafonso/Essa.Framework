@@ -1,9 +1,9 @@
-using System.Linq;
-using System.Text;
 using MixERP.Net.VCards.Extensions;
 using MixERP.Net.VCards.Lookups;
 using MixERP.Net.VCards.Models;
 using MixERP.Net.VCards.Types;
+using System.Linq;
+using System.Text;
 
 namespace MixERP.Net.VCards.Processors
 {

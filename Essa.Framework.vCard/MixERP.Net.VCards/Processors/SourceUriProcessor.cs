@@ -1,7 +1,7 @@
-using System;
 using MixERP.Net.VCards.Models;
 using MixERP.Net.VCards.Serializer;
 using MixERP.Net.VCards.Types;
+using System;
 
 namespace MixERP.Net.VCards.Processors
 {

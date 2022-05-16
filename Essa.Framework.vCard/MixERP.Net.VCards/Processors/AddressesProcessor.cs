@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using MixERP.Net.VCards.Extensions;
 using MixERP.Net.VCards.Lookups;
 using MixERP.Net.VCards.Models;
 using MixERP.Net.VCards.Types;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace MixERP.Net.VCards.Processors
 {
@@ -117,7 +117,7 @@ namespace MixERP.Net.VCards.Processors
                 address.Country = token.Values[6];
             }
 
-            var addresses = (List<Address>) vcard.Addresses ?? new List<Address>();
+            var addresses = (List<Address>)vcard.Addresses ?? new List<Address>();
             addresses.Add(address);
             vcard.Addresses = addresses;
         }

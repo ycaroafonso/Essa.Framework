@@ -1,7 +1,7 @@
-﻿using System;
-using System.Globalization;
-using MixERP.Net.VCards.Serializer;
+﻿using MixERP.Net.VCards.Serializer;
 using MixERP.Net.VCards.Types;
+using System;
+using System.Globalization;
 
 namespace MixERP.Net.VCards.Processors
 {
@@ -18,7 +18,7 @@ namespace MixERP.Net.VCards.Processors
         {
             DateTime parsed;
 
-            if (DateTime.TryParseExact(value, new[] {"o", "s", "yyyy-MM-ddTHH:mm:ssZ", "yyyy-MM-dd"}, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out parsed))
+            if (DateTime.TryParseExact(value, new[] { "o", "s", "yyyy-MM-ddTHH:mm:ssZ", "yyyy-MM-dd" }, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out parsed))
             {
                 return parsed;
             }

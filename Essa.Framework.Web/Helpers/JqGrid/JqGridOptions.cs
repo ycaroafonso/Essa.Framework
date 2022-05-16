@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Essa.Framework.Util.Extensions;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Essa.Framework.Util.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,11 +1,10 @@
 ﻿namespace Essa.Framework.Web.Helpers.Bootstrap
 {
     using DropDown;
-    using Portlet;
     using Essa.Framework.Web.Helpers.Bootstrap.Accordion;
     using Essa.Framework.Web.Helpers.Bootstrap.Modal;
     using Essa.Framework.Web.Helpers.Bootstrap.Tabs;
-    using System;
+    using Portlet;
     using System.Collections.Generic;
     using System.Web.Mvc;
 
@@ -40,7 +39,7 @@
             return new TabsBuilder(_htmlHelper.ViewContext, _id, indexAbaAtiva);
         }
 
-   
+
         public IModalAddBotao ModalGrande(string tituloModal)
         {
             return new ModalBuilder(_id, _htmlHelper.ViewContext).ModalGrande(tituloModal);

@@ -23,9 +23,9 @@ THE SOFTWARE.
 */
 #endregion Copyright
 
+using DataTables.AspNet.Core;
 using System;
 using System.Web.Mvc;
-using DataTables.AspNet.Core;
 
 namespace DataTables.AspNet.Mvc5
 {
@@ -74,7 +74,7 @@ namespace DataTables.AspNet.Mvc5
                 throw new NotSupportedException("This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.");
 
             var response = context.HttpContext.Response;
-            
+
             response.ContentType = ContentType;
             response.ContentEncoding = ContentEncoding;
 

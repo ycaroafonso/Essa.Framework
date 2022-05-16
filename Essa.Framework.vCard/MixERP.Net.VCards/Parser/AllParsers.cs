@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using MixERP.Net.VCards.Models;
+﻿using MixERP.Net.VCards.Models;
 using MixERP.Net.VCards.Processors;
+using System.Collections.Generic;
 
 namespace MixERP.Net.VCards.Parser
 {

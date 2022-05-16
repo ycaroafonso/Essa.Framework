@@ -46,7 +46,8 @@
 
             if (item.nodes == null)
                 str.Append(string.Format("<a style=\"padding: 10px {1}px\" href=\"#\">{0}</a>", item.text, 20 * (indexNivel + 1)));
-            else {
+            else
+            {
                 str.Append(
                     string.Format(@"<label class=""tree-toggler nav-header"" style=""padding: 0px 0px 0px {1}px;""><i class=""glyphicon glyphicon-folder-open""></i> {0}</label>"
                             , item.text, 20 * indexNivel));

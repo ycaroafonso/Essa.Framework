@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using MixERP.Net.VCards.Extensions;
+using System.Collections.Generic;
 using System.Linq;
-using MixERP.Net.VCards.Extensions;
 
 namespace MixERP.Net.VCards.Models
 {

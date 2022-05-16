@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MixERP.Net.VCards.Extensions;
+﻿using MixERP.Net.VCards.Extensions;
 using MixERP.Net.VCards.Lookups;
 using MixERP.Net.VCards.Models;
 using MixERP.Net.VCards.Serializer;
 using MixERP.Net.VCards.Types;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace MixERP.Net.VCards.Processors
 {
@@ -59,7 +59,7 @@ namespace MixERP.Net.VCards.Processors
             relation.Type = RelationTypeLookup.Parse(type.Value);
             relation.RelationUri = new Uri(token.Values[0], UriKind.RelativeOrAbsolute);
 
-            var relations = (List<Relation>) vcard.Relations ?? new List<Relation>();
+            var relations = (List<Relation>)vcard.Relations ?? new List<Relation>();
             relations.Add(relation);
             vcard.Relations = relations;
         }

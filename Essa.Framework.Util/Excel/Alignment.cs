@@ -14,11 +14,6 @@
 
 namespace Util.Excel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     public class Alignment : Element
     {
         public string Horizontal { get; set; }

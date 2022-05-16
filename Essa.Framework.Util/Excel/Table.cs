@@ -16,10 +16,9 @@ namespace Util.Excel
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Data.Common;
     using System.Data;
+    using System.Data.Common;
+    using System.Linq;
     using System.Reflection;
 
     public class Table : Element
@@ -461,7 +460,7 @@ namespace Util.Excel
                                 p.PropertyType.FullName.ToLower().Contains("long"))
                             {
                                 styleId = "sDefaultNumber";
-                            }                            
+                            }
                             else if (p.PropertyType.FullName.ToLower().Contains("string"))
                             {
                                 styleId = "sDefaultText";
@@ -474,7 +473,7 @@ namespace Util.Excel
                             {
                                 styleId = "sDefaultText";
                             }
-                            
+
                             if (styleId != null)
                                 AddColumn(new Column(null, styleId));
                         }
@@ -531,18 +530,18 @@ namespace Util.Excel
                                 d.Type = "DateTime";
                                 d.Value = (val != null) ? ((DateTime)val).ToString("s") : null;
                             }
-                            
+
                             else if (prop.PropertyType.FullName.ToLower().Contains("boolean"))
                             {
                                 d.Type = "Boolean";
                                 d.Value = (val != null) ? Convert.ToString((bool)val) : null;
-                            }                            
+                            }
                             else
                             {
                                 d.Type = "String";
                                 d.Value = (val != null) ? Convert.ToString(val).Replace(',', '.') : null;
                             }
-                            
+
                             if (val != null)
                                 c.AddElement(d);
                             nRow.AddCell(c);

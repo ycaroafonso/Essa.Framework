@@ -1,5 +1,5 @@
-using System.Text;
 using MixERP.Net.VCards.Processors;
+using System.Text;
 
 namespace MixERP.Net.VCards.Serializer
 {

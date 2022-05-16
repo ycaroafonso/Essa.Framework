@@ -23,8 +23,8 @@ THE SOFTWARE.
 */
 #endregion Copyright
 
-using System;
 using DataTables.AspNet.Core;
+using System;
 
 namespace DataTables.AspNet.Mvc5
 {
@@ -68,7 +68,7 @@ namespace DataTables.AspNet.Mvc5
         /// <param name="value">Search value.</param>
         /// <param name="isRegex">True if search value is regex, False if search value is plain text.</param>
         public Search(string value, bool isRegex)
-            : this (value, isRegex, null)
+            : this(value, isRegex, null)
         { }
         /// <summary>
         /// Creates a new search instance.

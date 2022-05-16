@@ -1,5 +1,5 @@
-﻿using System;
-using MixERP.Net.VCards.Types;
+﻿using MixERP.Net.VCards.Types;
+using System;
 
 namespace MixERP.Net.VCards.Models
 {

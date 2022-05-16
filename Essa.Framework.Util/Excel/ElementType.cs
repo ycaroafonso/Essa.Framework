@@ -14,11 +14,7 @@
 
 namespace Util.Excel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    
+
     public enum ElementType
     {
         WorkBook,
@@ -37,5 +33,5 @@ namespace Util.Excel
         Interior,
         NumberFormat,
         Protection
-    }    
+    }
 }

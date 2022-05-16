@@ -32,7 +32,7 @@
             if (emailDe != null)
                 _mailMessage = new MailMessage()
                 {
-                    From = new MailAddress(emailDe), 
+                    From = new MailAddress(emailDe),
                 };
         }
 

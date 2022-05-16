@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using MixERP.Net.VCards.Helpers;
+using MixERP.Net.VCards.Parser;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using MixERP.Net.VCards.Helpers;
-using MixERP.Net.VCards.Parser;
 
 namespace MixERP.Net.VCards
 {

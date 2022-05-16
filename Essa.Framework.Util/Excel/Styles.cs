@@ -17,8 +17,6 @@ namespace Util.Excel
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     public class Styles : Element
     {
@@ -27,7 +25,7 @@ namespace Util.Excel
         /// </summary>
         public IList<Object> Elements;
 
-        public Styles() : this (null, false)
+        public Styles() : this(null, false)
         {
             _type = ElementType.Styles;
         }
@@ -37,7 +35,7 @@ namespace Util.Excel
         /// </summary>
         /// <param name="createDefaultStyles"></param>
         public Styles(bool createDefaultStyles) : this(null, createDefaultStyles)
-        {   
+        {
         }
 
         /// <summary>
@@ -48,20 +46,20 @@ namespace Util.Excel
         public Styles(IEnumerable<Style> styles, bool createDefaultStyles)
         {
             try
-            { 
+            {
                 _type = ElementType.Styles;
                 if (createDefaultStyles)
                     CreateDefaults();
 
-                if(styles != null)
+                if (styles != null)
                 {
-                    foreach(Style b in styles)
+                    foreach (Style b in styles)
                     {
                         AddElement(b);
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -112,7 +110,7 @@ namespace Util.Excel
             }
             catch (Exception e)
             {
-                
+
                 throw e;
             }
         }
@@ -125,12 +123,12 @@ namespace Util.Excel
         {
             try
             {
-                if(Elements == null)
+                if (Elements == null)
                     Elements = new List<object>();
 
                 Elements.Add(nElement);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -138,7 +136,7 @@ namespace Util.Excel
 
         ~Styles()
         {
-            if(Elements != null)
+            if (Elements != null)
                 Elements.Clear();
         }
     }

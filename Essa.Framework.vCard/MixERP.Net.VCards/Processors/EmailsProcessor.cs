@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MixERP.Net.VCards.Extensions;
+﻿using MixERP.Net.VCards.Extensions;
 using MixERP.Net.VCards.Lookups;
 using MixERP.Net.VCards.Models;
 using MixERP.Net.VCards.Types;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace MixERP.Net.VCards.Processors
 {
@@ -59,7 +59,7 @@ namespace MixERP.Net.VCards.Processors
             email.Type = EmailTypeLookup.Parse(type.Value);
             email.EmailAddress = token.Values[0];
 
-            var emails = (List<Email>) vcard.Emails ?? new List<Email>();
+            var emails = (List<Email>)vcard.Emails ?? new List<Email>();
             emails.Add(email);
             vcard.Emails = emails;
         }

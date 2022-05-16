@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using MixERP.Net.VCards.Extensions;
+﻿using MixERP.Net.VCards.Extensions;
 using MixERP.Net.VCards.Types;
+using System;
+using System.Linq;
 
 namespace MixERP.Net.VCards.Serializer
 {
@@ -9,7 +9,7 @@ namespace MixERP.Net.VCards.Serializer
     {
         public static string GetVCardString(string key, string value, bool mustEscape, VCardVersion version, string type = "", string encoding = "")
         {
-            string[] types = {type};
+            string[] types = { type };
             return GetVCardString(key, value, mustEscape, version, types, encoding);
         }
 

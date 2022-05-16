@@ -23,12 +23,12 @@ THE SOFTWARE.
 */
 #endregion Copyright
 
+using DataTables.AspNet.Core;
+using DataTables.AspNet.Core.NameConvention;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using DataTables.AspNet.Core;
-using DataTables.AspNet.Core.NameConvention;
 
 namespace DataTables.AspNet.Mvc5
 {
@@ -46,8 +46,8 @@ namespace DataTables.AspNet.Mvc5
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             return BindModel(
-                controllerContext, 
-                bindingContext, 
+                controllerContext,
+                bindingContext,
                 DataTables.AspNet.Mvc5.Configuration.Options,
                 ParseAdditionalParameters);
         }
@@ -63,7 +63,7 @@ namespace DataTables.AspNet.Mvc5
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext, IOptions options, Func<ControllerContext, ModelBindingContext, IDictionary<string, object>> parseAdditionalParameters)
         {
             if (options == null || options.RequestNameConvention == null) return null;
-            
+
             var values = bindingContext.ValueProvider;
 
             // Accordingly to DataTables docs, it is recommended to receive/return draw casted as int for security reasons.
@@ -105,7 +105,7 @@ namespace DataTables.AspNet.Mvc5
                 return new DataTablesRequest(_draw, _start, _length, search, columns);
             }
         }
-        
+
         /// <summary>
         /// Provides custom aditional parameters processing for your request.
         /// You have to implement this to populate 'IDataTablesRequest' object with aditional (user-defined) request values.
@@ -124,7 +124,7 @@ namespace DataTables.AspNet.Mvc5
             var columns = new List<IColumn>();
 
             int counter = 0;
-            while(true)
+            while (true)
             {
                 // Parses Field value.
                 var columnField = values.GetValue(String.Format(names.ColumnField, counter));
@@ -150,7 +150,7 @@ namespace DataTables.AspNet.Mvc5
                 var columnSearchValue = values.GetValue(String.Format(names.ColumnSearchValue, counter));
                 string _columnSearchValue = null;
                 Parse<string>(columnSearchValue, out _columnSearchValue);
-                
+
                 // Parses IsRegex value.
                 var columnSearchRegex = values.GetValue(String.Format(names.IsColumnSearchRegex, counter));
                 bool _columnSearchRegex = false;
@@ -182,8 +182,8 @@ namespace DataTables.AspNet.Mvc5
         private static IEnumerable<ISort> ParseSorting(IEnumerable<IColumn> columns, IValueProvider values, IRequestNameConvention names)
         {
             var sorting = new List<ISort>();
-            
-            for(int i = 0; i < columns.Count(); i++)
+
+            for (int i = 0; i < columns.Count(); i++)
             {
                 var sortField = values.GetValue(String.Format(names.SortField, i));
                 int _sortField = 0;
@@ -194,14 +194,14 @@ namespace DataTables.AspNet.Mvc5
                 var sortDirection = values.GetValue(String.Format(names.SortDirection, i));
                 string _sortDirection = null;
                 Parse<string>(sortDirection, out _sortDirection);
-                
+
                 if (column.SetSort(i, _sortDirection))
                     sorting.Add(column.Sort);
             }
 
             return sorting;
         }
-        
+
         /// <summary>
         /// Parses a possible raw value and transforms into a strongly-typed result.
         /// </summary>

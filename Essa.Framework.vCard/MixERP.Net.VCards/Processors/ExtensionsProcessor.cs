@@ -1,8 +1,8 @@
-using System.Text;
 using MixERP.Net.VCards.Models;
 using MixERP.Net.VCards.Serializer;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace MixERP.Net.VCards.Processors
 {

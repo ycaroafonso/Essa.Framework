@@ -1,5 +1,4 @@
-﻿using System.Xml.Serialization;
-using System;
+﻿using System;
 
 namespace NFeDownload.NFe.SchemaXML
 {

@@ -16,10 +16,8 @@ namespace Util.Excel
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Data.Common;
     using System.Data;
+    using System.Linq;
 
     public class Worksheet : Element, IDisposable
     {
@@ -50,14 +48,14 @@ namespace Util.Excel
             {
                 try
                 {
-                    if(Elements != null)
+                    if (Elements != null)
                     {
                         var res = Elements.Where(el => el.GetType().Name.Equals("Table"));
                         return (res != null) ? res.Cast<Table>().ToList() : null;
                     }
                     return null;
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -103,15 +101,15 @@ namespace Util.Excel
             {
                 _name = name;
                 _type = ElementType.Worksheet;
-                if(attributes != null)
+                if (attributes != null)
                     CustomAttributes = attributes;
-                if(elements != null)
+                if (elements != null)
                 {
-                    foreach(Element elem in elements)
+                    foreach (Element elem in elements)
                         AddElement(elem);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -125,15 +123,15 @@ namespace Util.Excel
         {
             try
             {
-                if(Elements != null)
+                if (Elements != null)
                 {
                     var bTb = Elements.Where(e => e.GetType().Name.Equals("Table"));
-                    if(bTb != null)
+                    if (bTb != null)
                         Elements.Remove(bTb.First());
                 }
                 AddElement(tb);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new Exception("Erro ao adcionar tabela : " + e.Message);
             }
@@ -147,12 +145,12 @@ namespace Util.Excel
         {
             try
             {
-                if(Elements == null)
+                if (Elements == null)
                     Elements = new List<object>();
 
                 Elements.Add(nElement);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -160,7 +158,7 @@ namespace Util.Excel
 
         ~Worksheet()
         {
-            if(Elements != null)
+            if (Elements != null)
                 Elements.Clear();
         }
     }

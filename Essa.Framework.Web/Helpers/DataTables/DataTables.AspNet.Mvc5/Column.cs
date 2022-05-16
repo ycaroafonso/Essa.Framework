@@ -45,7 +45,7 @@ namespace DataTables.AspNet.Mvc5
             Name = name;
             Field = field;
             IsSortable = sortable;
-                        
+
             IsSearchable = searchable;
             if (!IsSearchable) Search = null;
             else Search = search ?? new Search(field);

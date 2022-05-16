@@ -1,7 +1,7 @@
-﻿using System;
+﻿using MixERP.Net.VCards.Types;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using MixERP.Net.VCards.Types;
 
 namespace MixERP.Net.VCards.Lookups
 {

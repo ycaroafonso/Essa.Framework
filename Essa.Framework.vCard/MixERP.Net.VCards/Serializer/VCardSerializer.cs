@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MixERP.Net.VCards.Types;
+using System;
 using System.Text;
-using MixERP.Net.VCards.Types;
 
 namespace MixERP.Net.VCards.Serializer
 {

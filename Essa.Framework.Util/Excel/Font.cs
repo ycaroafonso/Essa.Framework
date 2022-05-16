@@ -14,11 +14,6 @@
 
 namespace Util.Excel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     public class Font : Element
     {
         public string FontName
@@ -71,9 +66,9 @@ namespace Util.Excel
         /// <param name="family">família ex: (Roman)</param>
         /// <param name="size">Tamanho</param>
         /// <param name="color">Cor</param>
-        public Font(string name, string family, int? size, string color) 
+        public Font(string name, string family, int? size, string color)
             : this(name, family, size, color, null, null, null)
-        {  
+        {
         }
 
         /// <summary>
@@ -86,11 +81,11 @@ namespace Util.Excel
         /// <param name="underline">informações de sublinhado (Single, Double)</param>
         public Font(string name, string family, int? size, string color, string underline)
             : this(name, family, size, color, underline, null, null)
-        {   
+        {
         }
 
         public Font(string name, string family, int? size, string color, string underline, bool? bold)
-            :this(name, family, size, color, underline, bold, null)
+            : this(name, family, size, color, underline, bold, null)
         {
 
         }

@@ -23,10 +23,10 @@ THE SOFTWARE.
 */
 #endregion Copyright
 
+using DataTables.AspNet.Core;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using DataTables.AspNet.Core;
 
 namespace DataTables.AspNet.Mvc5
 {

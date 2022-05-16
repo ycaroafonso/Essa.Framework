@@ -1,7 +1,7 @@
-using System;
 using MixERP.Net.VCards.Extensions;
 using MixERP.Net.VCards.Helpers;
 using MixERP.Net.VCards.Models;
+using System;
 
 namespace MixERP.Net.VCards.Processors
 {
@@ -9,7 +9,7 @@ namespace MixERP.Net.VCards.Processors
     {
         public static string Serialize(VCard vcard)
         {
-            if(vcard.Photo == null)
+            if (vcard.Photo == null)
             {
                 return string.Empty;
             }

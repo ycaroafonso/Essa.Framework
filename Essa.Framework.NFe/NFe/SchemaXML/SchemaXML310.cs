@@ -1,7 +1,6 @@
 ﻿///
 
 
-using System.Xml.Serialization;
 using NFeDownload.NFe.SchemaXML;
 
 

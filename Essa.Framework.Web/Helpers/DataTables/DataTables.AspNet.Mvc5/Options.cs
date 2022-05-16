@@ -128,7 +128,7 @@ namespace DataTables.AspNet.Mvc5
         /// Creates a new 'Option' instance.
         /// </summary>
         public Options()
-            : this (10, true, false, false, new CamelCaseRequestNameConvention(), new CamelCaseResponseNameConvention())
+            : this(10, true, false, false, new CamelCaseRequestNameConvention(), new CamelCaseResponseNameConvention())
         { }
         /// <summary>
         /// Creates a new 'Option' instance.

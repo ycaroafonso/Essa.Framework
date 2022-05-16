@@ -11,7 +11,7 @@ namespace MixERP.Net.VCards.Extensions
                 return default(T);
             }
 
-            return (T) Convert.ChangeType(valueAsString, typeof(T));
+            return (T)Convert.ChangeType(valueAsString, typeof(T));
         }
 
         public static T? ConvertToNullableT<T>(this string valueAsString) where T : struct
@@ -21,7 +21,7 @@ namespace MixERP.Net.VCards.Extensions
                 return null;
             }
 
-            return (T) Convert.ChangeType(valueAsString, typeof(T));
+            return (T)Convert.ChangeType(valueAsString, typeof(T));
         }
 
         public static string Coalesce(this string actual, string substitute)

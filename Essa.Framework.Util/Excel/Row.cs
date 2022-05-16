@@ -17,7 +17,6 @@ namespace Util.Excel
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     public class Row : Element
     {
@@ -33,9 +32,9 @@ namespace Util.Excel
         }
 
         public int? Index
-        { 
+        {
             get;
-            set; 
+            set;
         }
         /// <summary>
         /// Lista de elementos
@@ -108,7 +107,7 @@ namespace Util.Excel
             : this(null, autoFitHeight, null, null)
         {
         }
-        
+
         /// <summary>
         /// Construtor
         /// </summary>
